@@ -27,7 +27,7 @@ article {
 
 
 
-/* Mise en page globale */
+/* MISE EN PAGE GLOBALE */
 
 
 
@@ -58,7 +58,7 @@ article {
 
 
 
-/* Mon en-tête, barre de navigation */
+/* LE HEADER ET LE MENU */
 
 
 
@@ -109,7 +109,7 @@ li {
 
 
 
-/* section présentation */
+/* SECTION PRESENTATION */
 
 
 
@@ -145,6 +145,7 @@ div#summary-content h2 {
 
 div#summary-content p {
     font-size: 20px;
+    text-align: center;
 
 }
 
@@ -169,8 +170,8 @@ div#about-blog p {
 }
 
 div#about-blog.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 div#login-block.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
@@ -190,9 +191,14 @@ div#login-asset {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    box-shadow: 2px 2px 1px 0px #656565;
 }
 
-/* section articles */
+
+
+/* SECTION ARTICLES */
+
+
 
 
 div#posts-block.row {
@@ -245,6 +251,10 @@ div#preview_post.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
     margin-bottom: 20px;
 }
 
+div#preview_post.col-lg-12.col-md-12.col-sm-12.col-xs-12 h2 {
+    text-align: center;
+}
+
 /* Le pied de page */
 
 
@@ -267,6 +277,50 @@ div#anchor.row {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+div#form-contact.col-lg-4.col-lg-4.col-sm-4.col-xs-12 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+div#about-me.col-lg-12.col-md-12.col-sm-12.col-xs-12 h3 {
+    color: beige;
+    text-align: center;
+}
+
+div#form-contact.col-lg-12.col-lg-12.col-sm-12.col-xs-12 {
+    padding-top: 40px;
+    padding-right: 10%;
+    padding-bottom: 40px;
+    padding-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/* LE FORMULAIRE DE CREATION DE COMPTE */
+
+div#title-login-form.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
+    text-align: center;
+}
+
+
+div#login-form.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
+    padding-top: 10px;
+    padding-right: 10%;
+    padding-bottom: 10px;
+    padding-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+div#login-form-block.row {
+    
 }
 
 

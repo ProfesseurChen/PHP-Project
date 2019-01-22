@@ -29,3 +29,8 @@ function fullPost() {
     
     require('views/fullPost.php');
 }
+
+function formLogin() {
+    
+    require('views/createLogin.php');
+}
