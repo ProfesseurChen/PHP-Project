@@ -1,0 +1,275 @@
+@font-face {
+    font-family: 'Droid Sans';
+    src: url(../fonts/DroidSans.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+  padding-top: 0px;
+  font-family: 'Droid Sans', sans-serif;
+}
+
+/* Test pour template */
+/*
+article {
+  background-color: lightgreen;
+  border: 2px solid black;
+  border-radius: 6px;
+  line-height: 40px;
+  text-align: center;
+}
+*/
+
+
+
+
+
+
+/* Mise en page globale */
+
+
+
+
+
+
+
+.container-fluid {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.navbar {
+	margin-bottom: 0px;
+	border-radius: 0px;
+}
+
+.row {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.nav {
+	float: none;
+}
+
+
+
+
+
+/* Mon en-tête, barre de navigation */
+
+
+
+div#logo 
+
+
+
+header {
+	height: 120px;
+    background-color: #FFFFFF;
+}
+
+
+div#title.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    color: black;
+}
+
+div.navbar.navbar-inverse {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+ul.nav.navbar-nav a {
+    display: flex;
+    justify-content: center;
+}
+
+ul.nav.navbar-nav a:hover {
+    background-color: #1D76BC;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+li {
+    width: 110px;
+}
+
+
+
+
+
+/* section présentation */
+
+
+
+
+
+
+div#summary.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
+    background: url(../pics/mountain.jpg) no-repeat center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+div#summary-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
+
+div#summary-content h2, div#summary-content p {
+    color: beige;
+}
+
+div#summary-content h2 {
+    font-size: 60px;
+    text-align: center;
+}
+
+div#summary-content p {
+    font-size: 20px;
+
+}
+
+div#about-blog {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div#about-blog h2 {
+    margin-bottom: 40px;
+    font-size: 50px;
+    text-align: center;
+    
+}
+
+div#about-blog p {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+div#about-blog.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+div#login-block.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+div#login-asset {
+    height: 300px;
+    width: 300px;
+    background: #DADADA;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* section articles */
+
+
+div#posts-block.row {
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+
+div#preview_post.col-lg-6.col-md-6.col-sm-12.col-xs-12 {
+	height: auto;
+	width: 50%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    display: inline;
+}
+
+span#posts-title h2 {
+    font-size: 50px;
+    text-align: center;
+}
+
+article {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div#preview_post.col-lg-6.col-md-6.col-sm-12.col-xs-12 a {
+    font-size: 1.2em;
+}
+
+div#preview_post.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+div#preview_post.col-lg-12.col-md-12.col-sm-12.col-xs-12 a {
+    font-size: 1.2em;
+}
+
+div#list-post.row h1 {
+    text-align: center;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+div#preview_post.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Le pied de page */
+
+
+
+
+
+footer {
+	background-color: #222222;
+}
+
+footer p {
+	color: #ffffff;
+}
+
+input#inputText.form-control {
+	height: 92px;
+}
+
+div#anchor.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Le formulaire d'écriture */
+
+
