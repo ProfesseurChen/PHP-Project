@@ -5,7 +5,7 @@
 <article>
     <div id="list-post" class="row">
         
-        <h1>La liste de mes articles. N'hésitez pas à laisser vos commentaires en dessous ! ;o </h1>
+        <h1>La liste de mes articles. N'hésitez pas à laisser vos commentaires en dessous ! </h1>
         
         <?php
         
