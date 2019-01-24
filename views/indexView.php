@@ -24,19 +24,68 @@
             <p>Ex turba vero imae sortis et paupertinae in tabernis aliqui pernoctant vinariis, non nulli velariis umbraculorum theatralium latent, quae Campanam imitatus lasciviam Catulus in aedilitate sua suspendit omnium primus; aut pugnaciter aleis certant turpi sono fragosis naribus introrsum reducto spiritu concrepantes; aut quod est studiorum omnium maximum ab ortu lucis ad vesperam sole fatiscunt vel pluviis, per minutias aurigarum equorumque praecipua vel delicta scrutantes.</p><br />
             <p>Incenderat autem audaces usque ad insaniam homines ad haec, quae nefariis egere conatibus, Luscus quidam curator urbis subito visus: eosque ut heiulans baiolorum praecentor ad expediendum quod orsi sunt incitans vocibus crebris. qui haut longe postea ideo vivus exustus est.</p><br />
         </div>
-
+        
+        <?php
+        if (empty($_SESSION['pseudo'])) {
+            ?>
         <div id="login-block" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div id="login-asset">
+
                 <p>Vous avez un compte ?</p><br />
                 <p><strong>Connectez-vous !</strong></p>
-                <form>
-                  <input type="pseudo" class="form-control" id="inputPseudo" placeholder="Votre pseudo"><br />
-                  <input type="password" class="form-control" id="inputPassword" placeholder="Votre mot de passe"><br />
-                  <button type="submit" class="btn btn-primary">Se connecter</button><br />
+
+                <?php 
+                if (isset($_POST['submit'])) {
+
+                try {
+                    $db = new PDO('mysql:host=localhost;dbname=project;charset=utf8', 'root', 'root');
+                    }
+                catch(Exception $e) 
+                    {
+                    die('Erreur : '.$e->getMessage());
+                }
+
+                $req = $db->prepare('SELECT * FROM account WHERE pseudo = :pseudo AND password = :password');
+                $req->execute(array(':pseudo' => $pseudo, ':password' => $password));
+                $verif = $req->fetch();
+                
+                    if (empty($_POST['log-pseudo'])) {
+
+                        echo '<p>Vous n\'avez pas renseigné de pseudo</p>';
+                    }
+                    elseif (empty($_POST['log-password'])) {
+
+                        echo '<p>Vous n\'avez pas renseigné de mot de passe </p>';
+
+                    } elseif ($_POST['log-pseudo'] != $pseudo) {
+
+                        echo '<p>Votre pseudo n\'existe pas ! Inscrivez-vous !</p>';
+
+                    } elseif (($_POST['log-pseudo'] == $pseudo) && ($_POST['log-password'] != $password)) {
+
+                        echo '<p>Le mot de passe ne correspond pas au pseudo !</p>';
+                    }
+                }
+                ?>
+                <form action="index.php" method="post" enctype="multipart/form-data">
+                  <input type="pseudo" name="log-pseudo" class="form-control" id="inputPseudo" placeholder="Votre pseudo"><br />
+                  <input type="password" name="log-pass" class="form-control" id="inputPassword" placeholder="Votre mot de passe"><br />
+                  <button type="submit" name="submit" class="btn btn-primary">Se connecter</button><br />
                   <p>Vous n'avez pas de compte ?<a href="index.php?action=createLogin"> Cliquez ICI !</a></p>
                 </form>
             </div>
         </div>
+        <?php } else {
+            ?>
+        <div id="login-block" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div id="login-asset">
+            <p>Bienvenue <?php echo htmlspecialchars($_SESSION['pseudo']); ?> ! </p>
+            <p>Vous pouvez cliquer ici pour vous déconnecter: <a href="index.php?action=disconnect">ICI</a></p>
+          </div>
+        </div> 
+        <?php
+        }
+        ?>
 
         </div>
       </section>

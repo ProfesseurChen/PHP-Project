@@ -29,8 +29,11 @@ if (isset($_GET['action'])) {
         
 	} elseif ($_GET['action'] == 'createLogin') {
         
-        formLogin();
-        
+		formLogin();
+		
+	} elseif ($_GET['action'] == 'disconnect') {
+
+		disconnect();
     }
 	else { echo 'Erreur : La page que vous avez demandé n\'existe pas ! Revenez à la page d\'accueil : <a href="index.php">ICI</a>';
 	}

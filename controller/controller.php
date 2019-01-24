@@ -34,3 +34,8 @@ function formLogin() {
     
     require('views/createLogin.php');
 }
+
+function disconnect() {
+
+	require('views/disconnect.php');
+}
