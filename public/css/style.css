@@ -169,12 +169,12 @@ div#about-blog p {
     padding-right: 10%;
 }
 
-div#about-blog.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
+div#about-blog.col-lg-8.col-md-8.col-sm-12.col-xs-12 {
     margin-top: 15px;
     margin-bottom: 15px;
 }
 
-div#login-block.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
+div#login-block.col-lg-4.col-md-4.col-sm-12.col-xs-12 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -212,10 +212,9 @@ div#preview_post.col-lg-6.col-md-6.col-sm-12.col-xs-12 {
 	width: 50%;
     margin-bottom: 20px;
     margin-top: 20px;
-    display: inline;
 }
 
-span#posts-title h2 {
+span#posts-title {
     font-size: 50px;
     text-align: center;
 }
@@ -262,10 +261,10 @@ div#preview_post.col-lg-12.col-md-12.col-sm-12.col-xs-12 h2 {
 
 
 footer {
-	background-color: #222222;
+	
 }
 
-footer p {
+footer p, footer h3 {
 	color: #ffffff;
 }
 
@@ -277,6 +276,7 @@ div#anchor.row {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #222222;
 }
 
 div#form-contact.col-lg-4.col-lg-4.col-sm-4.col-xs-12 {
@@ -289,11 +289,11 @@ div#about-me.col-lg-12.col-md-12.col-sm-12.col-xs-12 h3 {
     text-align: center;
 }
 
-div#form-contact.col-lg-12.col-lg-12.col-sm-12.col-xs-12 {
-    padding-top: 40px;
-    padding-right: 10%;
-    padding-bottom: 40px;
-    padding-left: 10%;
+div#about-me.col-lg-8.col-lg-8.col-sm-12.col-xs-12, div#form-contact.col-lg-4.col-lg-4.col-sm-12.col-xs-12 {
+    padding-top: 20px;
+    padding-right: 5%;
+    padding-bottom: 20px;
+    padding-left: 5%;
     display: flex;
     justify-content: center;
     align-items: center;

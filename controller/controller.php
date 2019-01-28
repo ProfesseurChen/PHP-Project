@@ -4,7 +4,6 @@ require('model/model.php');
 
 function homePost() {
 
-	$req = getTicketsHome();
 
 	require('views/indexView.php');
 
