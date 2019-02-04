@@ -4,6 +4,8 @@
 
 require('controller/controller.php');
 
+session_start();
+
 if (isset($_GET['action'])) {
 	if ($_GET['action'] == 'indexView') {
         
@@ -12,13 +14,15 @@ if (isset($_GET['action'])) {
 	} 
 	elseif ($_GET['action'] == 'postView') {
         
-		postView();
+		getPostView();
         
 	} elseif ($_GET['action'] == 'fullPost') {
         
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             
-        fullPost(); } else {
+		fullPost(); 
+
+		} else {
             
             echo 'Pas de billets ! Revenez à la page d\'accueil : <a href="index.php">ICI</a> ';
             

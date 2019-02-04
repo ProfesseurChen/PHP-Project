@@ -1,14 +1,13 @@
 <!-- Ceci sera la page d'accueil par défaut ! -->
 <?php
 if (!empty($_SESSION['pseudo'])) {
-    $title = 'Bienvenue' . $_SESSION['pseudo'] . ' sur le blog de Jean Forteroche !';
+    $title = 'Bienvenue ' . $_SESSION['pseudo'] . ' sur le blog de Jean Forteroche !';
 } else {
     $title = 'Bienvenue sur le blog de Jean Forteroche !'; 
 }
 ?>
 
-<?php ob_start(); 
-session_start(); ?>
+<?php ob_start(); ?>
 
 <div class="container-fluid">
 
@@ -37,8 +36,6 @@ session_start(); ?>
                 {
                 die('Erreur : '.$e->getMessage());
             }
-            
-            echo $_SESSION['pseudo'];
 
             if (empty($_SESSION['pseudo'])) {
             ?>

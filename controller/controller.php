@@ -1,30 +1,39 @@
 <?php
 
-require('model/model.php');
+require_once('model/postmanager.php');
+
+
 
 function homePost() {
 
+	
+	$postManager = new PostManager();
+	$posts = $postManager->getTicketsHome();
 
 	require('views/indexView.php');
 
 }
 
-function postView() {
+function getPostView() {
 
-	$req = getPostView();
+
+	$postManager = new PostManager();
+
+	$post = $postManager->getPostView();
 
 	require('views/postView.php');
 
 }
 
 function writeView() {
-
+	
 	require('views/writePost.php');
 }
 
 function fullPost() {
-    
-    $post = getFullPost($_GET['id']);
+	
+	$postManager = new PostManager();
+    $post = $postManager->getFullPost($_GET['id']);
     
     require('views/fullPost.php');
 }
@@ -35,6 +44,6 @@ function formLogin() {
 }
 
 function disconnect() {
-
+	
 	require('views/disconnect.php');
 }

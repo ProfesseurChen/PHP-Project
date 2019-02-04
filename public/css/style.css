@@ -260,11 +260,7 @@ div#preview_post.col-lg-12.col-md-12.col-sm-12.col-xs-12 h2 {
 
 
 
-footer {
-	
-}
-
-footer p, footer h3 {
+div#about-me.col-lg-8.col-md-8.col-sm-12.col-xs-12 p, div#about-me.col-lg-8.col-md-8.col-sm-12.col-xs-12 h3, div#form-contact.col-lg-4.col-md-4.col-sm-12.col-xs-12 p {
 	color: #ffffff;
 }
 
