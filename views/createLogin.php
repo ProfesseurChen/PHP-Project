@@ -17,13 +17,13 @@
 <div id="login-form-block" class="row">
     <div id="login-form" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <form action="views/checkpassword.php" method="post" enctype="multipart/form-data">
-            <p>Choississez un pseudo ( 12 caractères maximum ) : </p><br />
+            <p><strong>Choississez un pseudo ( 12 caractères maximum ) : </strong></p><br />
             <input type="pseudo" name="my-pseudo" class="form-control" id="inputPseudo" style="width: 200px;" placeholder="Votre pseudo"><br />
-            <p>Entrez votre adresse mail: </p><br />
+            <p><strong>Entrez votre adresse mail: </strong></p><br />
             <input type="mail" name="my-mail" class="form-control" id="inputMail" style="width: 200px;" placeholder="Votre email"><br />
-            <p>Entrez un mot de passe ( 16 caractères maximum ) : </p><br />
+            <p><strong>Entrez un mot de passe ( 16 caractères maximum ) : </strong></p><br />
             <input name="my-password" type="password" class="form-control" id="inputPassword" style="width: 200px;" placeholder="Votre mot de passe"><br />
-            <p>Confirmez votre mot de passe : </p><br />
+            <p><strong>Confirmez votre mot de passe : </strong></p><br />
             <input name="my-password2" type="password" class="form-control" id="inputPassword" style="width: 200px;"><br />
             <input id="input-login" type="submit" class="btn btn-primary" value="Créer votre compte" />
         </form>

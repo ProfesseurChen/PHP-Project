@@ -24,7 +24,7 @@ if (isset($_GET['action'])) {
 
 		} else {
             
-            echo 'Pas de billets ! Revenez à la page d\'accueil : <a href="index.php">ICI</a> ';
+            echo 'Ce billet n\'existe pas ! Revenez à la page d\'accueil : <a href="index.php">ICI</a> ';
             
         }
     } elseif ($_GET['action'] == 'writePost') {

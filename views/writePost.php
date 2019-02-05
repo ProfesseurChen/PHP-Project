@@ -2,13 +2,15 @@
 
 <?php ob_start(); ?>
 
-<div id="write-tinymce">
-    <div id="write-block">
-      <h2>Écrivez votre billet :</h2>
-      <form action="views/write.php" method="post">
-            <textarea name="post" rows="15" > </textarea>
-            <input type="submit" class="btn btn-primary" value="Envoyer" />
-      </form>
+<div class="container-fluid">
+    <div id="write-block" class="row">
+      <div id="write-tinymce" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h2>Écrivez votre billet :</h2>
+        <form action="views/write.php" method="post">
+              <textarea name="elem1" rows="10"> </textarea>
+              <input type="submit" class="btn btn-primary" value="Envoyer" />
+        </form>
+      </div>
     </div>
 </div>
 

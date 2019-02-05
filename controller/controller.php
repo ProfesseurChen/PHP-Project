@@ -1,6 +1,7 @@
 <?php
 
 require_once('model/postmanager.php');
+require_once('model/pagination.php');
 
 
 
@@ -18,6 +19,7 @@ function getPostView() {
 
 
 	$postManager = new PostManager();
+	
 
 	$post = $postManager->getPostView();
 
@@ -26,7 +28,7 @@ function getPostView() {
 }
 
 function writeView() {
-	
+
 	require('views/writePost.php');
 }
 

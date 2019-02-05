@@ -1,6 +1,7 @@
 @font-face {
-    font-family: 'Droid Sans';
-    src: url(../fonts/DroidSans.ttf);
+    font-family: 'Montserrat';
+    src: url(../fonts/montserrat-regular.woff) format('woff'), 
+        url(../fonts/montserrat-regular.woff2) format('woff2');
     font-weight: normal;
     font-style: normal;
 }
@@ -8,7 +9,7 @@
 
 body {
   padding-top: 0px;
-  font-family: 'Droid Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Test pour template */
@@ -199,6 +200,27 @@ div#login-asset {
 /* SECTION ARTICLES */
 
 
+div#block-reaction.col-lg-4.col-md-4.col-sm-12.col-xs-12, div#block-comment.col-lg-8.col-md-8.col-sm-12.col-xs-12 {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+div#block-reaction.col-lg-4.col-md-4.col-sm-12.col-xs-12 h3, div#block-comment.col-lg-8.col-md-8.col-sm-12.col-xs-12 h3 {
+    text-align: center;
+}
+
+div#post-view.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+div#post-view.col-lg-12.col-md-12.col-sm-12.col-xs-12 h2 {
+    text-align: center;
+}
 
 
 div#posts-block.row {
@@ -254,6 +276,27 @@ div#preview_post.col-lg-12.col-md-12.col-sm-12.col-xs-12 h2 {
     text-align: center;
 }
 
+div#pagination.row {
+    text-align: center;
+}
+
+button {
+    text-align: center;
+}
+button a {
+    color: #ffffff;
+}
+
+button a:link {
+    text-decoration: none;
+}
+
+button a:hover {
+    color: #ffffff;
+}
+
+
+
 /* Le pied de page */
 
 
@@ -268,10 +311,8 @@ input#inputText.form-control {
 	height: 92px;
 }
 
-div#anchor.row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+div#footer.row {
+
     background-color: #222222;
 }
 
@@ -315,9 +356,6 @@ div#login-form.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
 
 }
 
-div#login-form-block.row {
-    
-}
 
 
 /* Le formulaire d'écriture */
