@@ -1,13 +1,5 @@
 <!-- Ceci sera le template à utiliser -->
 
-<?php 
-
-if (isset($_SESSION['pseudo'])) {
-
-echo $_SESSION['pseudo']; }
-
-?>
-
 <!DOCTYPE html>
 <html>
   <head>

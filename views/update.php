@@ -8,9 +8,17 @@ try {
         die('Erreur : '.$e->getMessage());
       }
 
-$req = $bdd->prepare('INSERT INTO tickets(post) VALUES(?)');
+if (isset($_POST['submitupdate'])) {
+
+$req = $bdd->prepare('UPDATE tickets SET post = ? WHERE id = '.$_GET['id'].'');
 $req->execute(array($_POST['elem1']));
 
+
 header('Location: ../index.php');
+
+} else {
+    
+    echo '<p>Vous ne pouvez pas effectuer cette action ! Revenez à l\'accueil : <a href="../index.php">ICI</a></p>';
+}
 
 ?>

@@ -2,6 +2,7 @@
 
 require_once('model/postmanager.php');
 require_once('model/pagination.php');
+require_once('model/commentmanager.php');
 
 
 
@@ -35,9 +36,20 @@ function writeView() {
 function fullPost() {
 	
 	$postManager = new PostManager();
-    $post = $postManager->getFullPost($_GET['id']);
+	$commentManager = new CommentManager();
+	$post = $postManager->getFullPost($_GET['id']);
+	$comments = $commentManager->getComments($_GET['id']);
     
     require('views/fullPost.php');
+}
+
+function editPost() {
+
+	$postManager = new PostManager();
+	$post = $postManager->getFullPost($_GET['id']);
+
+	require('views/editPost.php');
+
 }
 
 function formLogin() {
@@ -48,4 +60,17 @@ function formLogin() {
 function disconnect() {
 	
 	require('views/disconnect.php');
+}
+
+function delete() {
+
+	require('views/delete.php');
+}
+
+function writeComments($postId, $pseudo, $comment)
+{
+	$comments = new CommentManager();
+	$comment = $comments->writeComments($postId, $pseudo, $comment);
+	
+    header('Location: index.php?action=fullPost&id=' . $postId);
 }

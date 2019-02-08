@@ -2,10 +2,18 @@
         
 <?php ob_start(); ?>
 <div class="container-fluid">
+	<div id="admin-button-block" class="row">
+		<div id="admin-button" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<?php echo '<button type="button" class="btn btn-primary"><a href="index.php?action=editPost&amp;id=' . $post['id'] . '">Éditer</a></button>'; ?><br />
+		<?php echo '<button type="button" class="btn btn-danger"><a href="index.php?action=delete&amp;id=' . $post['id'] . '">Supprimer</a></button>'; ?><br />
+		</form>
+		
+		</div>
+	</div>
 	<div class="row">
 		<div id="post-view" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-			<?php echo $post['post']; ?>
+             <?php echo $post['post']; ?>
 			
 		</div>			
 	</div>
@@ -13,7 +21,7 @@
 		<div id="block-reaction" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 			<h3>Laissez votre commentaire :</h3><br />
 			<p><strong>Connectez-vous et réagissez ! Votre avis nous intéresse ! </strong></p>
-			<?php echo '<form action="index.php?action=fullPost&amp;id="'.$_GET['id'].' method="post" enctype="multipart/form-data">'; ?>
+			<?php echo '<form action="index.php?action=writeComments&amp;id="'.$post['id'].'" method="post" enctype="multipart/form-data">'; ?>
 			<p>Votre pseudo : </p>
 			<input type="pseudo" name="name-comment" class="form-control" id="inputPseudo" placeholder="Votre pseudo" style="width:200px;"/><br />
 			<p>Votre commentaire : </p>
@@ -22,34 +30,19 @@
 			</form>
 		</div>
 
-		<?php 
-
-		$db = new PDO('mysql:host=localhost;dbname=project;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-
-		if (isset($_POST['name-comment']) && isset($_POST['comment'])) {
-
-			$insert = $db->prepare('INSERT INTO comments(id_post, comment, date) VALUES(?, ?, ?, NOW()');
-			$insert->execute($_GET['id'], $_POST['name-comment'], $_POST['comment']);
-
-			$insert->closeCursor();
-		}
-
-		?>
 		<div id="block-comment" class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 			<h3>Les 5 dernières réactions :</h3><br />
 			<?php
 
-			$comment = $db->query('SELECT pseudo, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y\') AS comment_timestamp FROM comments WHERE id_post = ? ORDER BY comment_date LIMIT DESC 0, 5');
+			if (!empty($date)) {
+				while ($date = $comments->fetch())  {
+					echo '<strong><p>'.htmlspecialchars($date['pseudo']).' ( le '.$date['comment_date_fr'].' ) : </p></strong><br />';
+					echo '<p>'.n12br(htmlspecialchars($date['comment'])).'</p>'; }
 
-			if (isset($comment['comment'])) {
+				} else {
 
-				while ($date = $comment->fetch())  {
-					echo '<strong><p>'.$data['pseudo'].' ( le '.$data['comment_timestamp'].' ) : </p></strong><br />';
-					echo '<p>'.$data['comment'].'</p>';
+					echo '<p>Il n\'y a pas encore de commentaire !</p>';
 				}
-			} else {
-				echo '<p><strong>Il n\'y a aucun commentaire ! </strong></p><br />';
-			}
 			
 			?>
 

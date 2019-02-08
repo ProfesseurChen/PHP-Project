@@ -7,10 +7,10 @@ try {
       {
         die('Erreur : '.$e->getMessage());
       }
+echo $_GET['id'];
 
-$req = $bdd->prepare('INSERT INTO tickets(post) VALUES(?)');
-$req->execute(array($_POST['elem1']));
+$req = $bdd->query('DELETE FROM tickets WHERE id = '.$_GET['id'].'');
 
-header('Location: ../index.php');
+header('Location: index.php');
 
 ?>

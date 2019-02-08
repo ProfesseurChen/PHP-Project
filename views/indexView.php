@@ -5,7 +5,7 @@ if (!empty($_SESSION['pseudo'])) {
 } else {
     $title = 'Bienvenue sur le blog de Jean Forteroche !'; 
 }
-?>
+?> 
 
 <?php ob_start(); ?>
 
@@ -17,10 +17,11 @@ if (!empty($_SESSION['pseudo'])) {
                 <div id="summary-content">
                 <h2>Bienvenue sur mon blog personnel !</h2>
                 <p>Metuentes igitur idem latrones Lycaoniam !</p><br />
+                </div>
             </div>
 
         </div>
-        <div class="row">
+        <div  id="details" class="row">
             <div id="about-blog" class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <h2>Que trouverez vous ici ?</h2>
                 <p>Ex turba vero imae sortis et paupertinae in tabernis aliqui pernoctant vinariis, non nulli velariis umbraculorum theatralium latent, quae Campanam imitatus lasciviam Catulus in aedilitate sua suspendit omnium primus; aut pugnaciter aleis certant turpi sono fragosis naribus introrsum reducto spiritu concrepantes; aut quod est studiorum omnium maximum ab ortu lucis ad vesperam sole fatiscunt vel pluviis, per minutias aurigarum equorumque praecipua vel delicta scrutantes.</p><br />
@@ -41,7 +42,7 @@ if (!empty($_SESSION['pseudo'])) {
             ?>
             <div id="login-block" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div id="login-asset">
-                <p>Vous avez un compte ?</p><br />
+                <h4>Vous avez un compte ?</h4><br />
                 <p><strong>Connectez-vous !</strong></p>
                 <form action="index.php" method="post" enctype="multipart/form-data">
                     <input type="pseudo" name="log-pseudo" class="form-control" id="inputPseudo" placeholder="Votre pseudo"><br />
@@ -92,7 +93,23 @@ if (!empty($_SESSION['pseudo'])) {
     } ?>
 
     </div>
+    <div id="preview-title" class="row">
+        <div id="preview-child" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h2>Un aperçu de mes articles !</h2>
+            <p>Vous pouvez en trouvez d'autres dans la sections "Mes articles" dans la barre de menu.</p><br />
+            <p> N'hésitez pas à y jeter un oeil, et faire vos retours dans les commentaires !</p>
+        </div>
+    </div>
+    <div id="block-preview" class="row">
+       <?php while ($home = $posts->fetch()) 
+      {
+        ?>
+        <div id ="preview_post" class="col-lg-6 col-md-6 col-sm-12 col-xs-12"> <?php $preview = substr($home['post'], 0, 250);
+        echo $preview . ' . . . <br /><a href="index.php?action=fullPost&amp;id=' . $home['id'] . '"><br />Lire la suite !</a><br />' ?> </div>
 
+      <?php
+      }?>
+    </div>
 </div>
 
 <?php $home = ob_get_clean();

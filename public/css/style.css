@@ -114,7 +114,9 @@ li {
 
 
 
-
+div#details.row {
+    align-items: center;
+}
 
 
 div#summary.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
@@ -124,7 +126,7 @@ div#summary.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: auto;
+    height: 500px;
 }
 
 div#summary-content {
@@ -136,7 +138,7 @@ div#summary-content {
 }
 
 div#summary-content h2, div#summary-content p {
-    color: beige;
+    color: #ffffff;
 }
 
 div#summary-content h2 {
@@ -156,6 +158,8 @@ div#about-blog {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 div#about-blog h2 {
@@ -170,10 +174,6 @@ div#about-blog p {
     padding-right: 10%;
 }
 
-div#about-blog.col-lg-8.col-md-8.col-sm-12.col-xs-12 {
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
 
 div#login-block.col-lg-4.col-md-4.col-sm-12.col-xs-12 {
     display: flex;
@@ -184,7 +184,7 @@ div#login-block.col-lg-4.col-md-4.col-sm-12.col-xs-12 {
 }
 
 div#login-asset {
-    height: 300px;
+    height: 100%;
     width: 300px;
     background: #DADADA;
     border-radius: 5px;
@@ -193,12 +193,25 @@ div#login-asset {
     align-items: center;
     flex-direction: column;
     box-shadow: 2px 2px 1px 0px #656565;
+    padding-top: 20px;
+    padding-bottom: 20px; 
 }
 
 
 
 /* SECTION ARTICLES */
 
+div#admin-button.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+div#admin-button.col-lg-12.col-md-12.col-sm-12.col-xs-12 button {
+    margin-left: 10px;
+    margin-right: 10px;
+}
 
 div#block-reaction.col-lg-4.col-md-4.col-sm-12.col-xs-12, div#block-comment.col-lg-8.col-md-8.col-sm-12.col-xs-12 {
     padding-left: 5%;
@@ -214,11 +227,10 @@ div#block-reaction.col-lg-4.col-md-4.col-sm-12.col-xs-12 h3, div#block-comment.c
 div#post-view.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
     padding-left: 5%;
     padding-right: 5%;
-    padding-top: 2%;
     padding-bottom: 2%;
 }
 
-div#post-view.col-lg-12.col-md-12.col-sm-12.col-xs-12 h2 {
+div#post-view.col-lg-12.col-md-12.col-sm-12.col-xs-12 h1, div#post-view.col-lg-12.col-md-12.col-sm-12.col-xs-12 h2, div#post-view.col-lg-12.col-md-12.col-sm-12.col-xs-12 h3, div#post-view.col-lg-12.col-md-12.col-sm-12.col-xs-12 h4, div#post-view.col-lg-12.col-md-12.col-sm-12.col-xs-12 h5, div#post-view.col-lg-12.col-md-12.col-sm-12.col-xs-12 h6 {
     text-align: center;
 }
 
@@ -230,10 +242,8 @@ div#posts-block.row {
 
 
 div#preview_post.col-lg-6.col-md-6.col-sm-12.col-xs-12 {
-	height: auto;
-	width: 50%;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin-bottom: 50px;
+    margin-top: 50px;
 }
 
 span#posts-title {
@@ -295,6 +305,33 @@ button a:hover {
     color: #ffffff;
 }
 
+div#preview_post.col-lg-6.col-md-6.col-sm-12.col-xs-12 p, div#preview_post.col-lg-6.col-md-6.col-sm-12.col-xs-12 h2 {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+div#preview-title.row {
+    background: url(../pics/sky.jpg) no-repeat center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+}
+
+div#preview-title.row h2, div#preview-title.row p {
+    color: #ffffff;
+    text-align: center;
+}
+
+div#preview-title.row h2 {
+    font-size: 60px;
+}
+
+div#preview-child.col-lg-12.col-md-12.col-sm-12.col-xs-12 h2 {
+    text-align: center;
+}
 
 
 /* Le pied de page */
