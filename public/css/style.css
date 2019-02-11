@@ -333,7 +333,22 @@ div#preview-child.col-lg-12.col-md-12.col-sm-12.col-xs-12 h2 {
     text-align: center;
 }
 
+div#comment-box {
+    display: flex;
+}
 
+div#error-message.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
+    text-align: center;
+
+    padding-bottom: 200px;
+}
+
+div#error-pic.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
+
+    padding-top: 200px;
+    padding-bottom: 20px;
+    text-align: center;
+}
 /* Le pied de page */
 
 

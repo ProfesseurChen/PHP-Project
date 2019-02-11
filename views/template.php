@@ -33,6 +33,7 @@
             <li> <a href="index.php">Accueil</a> </li>
             <li> <a href="index.php?action=postView">Mes articles</a> </li>
             <li> <a href="index.php?action=writePost">Édition</a> </li>
+            <li> <a href="index.php?action=backoffice">Administration</a> </li>
             <li> <a href="#anchor">Contact</a></li>
           </ul>
             

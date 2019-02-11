@@ -57,5 +57,39 @@ class PostManager extends Manager
         return $fullpost;
         
     }
+
+    public function addPost($post) {
+
+        $db = $this->dbConnect();
+        $req = $db->prepare('INSERT INTO tickets(post) VALUES(?)');
+        $req->execute(array($post));
+
+    header('Location: ../index.php');
+    }
+
+    public function deletePost($postId) {
+        $db = $this->dbConnect();
+
+        $req = $db->query('DELETE FROM tickets WHERE id = '.$postId.'');
+
+        $confirm = '<div class="alert alert-success" role="alert">Votre article a été supprimé !</div>';
+
+        return $confirm;
+
+        header('Location: index.php');
+    }
+
+    public function updateFullPost($postId, $post) {
+
+        $db = $this->dbConnect();
+
+        $req = $db->prepare('UPDATE tickets SET post = ? WHERE id = '.$postId.'');
+        $req->execute(array($post));
+
+        $confirmUpdate = '<div class="alert alert-success" role="alert">Votre article a édité !</div>';
+
+       return $confirmUpdate;
+
+    }
 }
 ?>

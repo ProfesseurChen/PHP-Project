@@ -6,7 +6,7 @@
     <div id="write-block" class="row">
       <div id="write-tinymce" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <h2>Écrivez votre billet :</h2>
-        <form action="views/write.php" method="post">
+        <form action="index.php?action=addPost" method="post">
               <textarea name="elem1" rows="10"> </textarea>
               <input type="submit" class="btn btn-primary" value="Envoyer" />
         </form>
