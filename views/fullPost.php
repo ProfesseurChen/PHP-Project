@@ -32,12 +32,11 @@
 		<div id="block-reaction" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 			<h3>Laissez votre commentaire :</h3><br />
 			<p><strong>Connectez-vous et réagissez ! Votre avis nous intéresse ! </strong></p>
-			<?php echo '<form action="views/commentsWrite.php" method="post" enctype="multipart/form-data">'; ?>
+			<?php echo '<form action="index.php?action=writeComments&amp;id='.$_GET['id'].'" method="post" enctype="multipart/form-data">'; ?>
 			<p>Votre pseudo : </p>
 			<input type="pseudo" name="name-comment" class="form-control" id="inputPseudo" placeholder="Votre pseudo" style="width:200px;"/><br />
 			<p>Votre commentaire : </p>
 			<textarea name="comment" class="form-control" rows="5" style="width:300px;" class="mceNoEditor"> </textarea><br />
-			<input type="hidden" name="idpost" value="<?=$_GET['id']?>" />
 			<input type="submit" class="btn btn-primary" value="Envoyer" />
 			</form>
 		</div>
@@ -51,8 +50,8 @@
 				while ($date = $comment->fetch())  { ?>
 					<div id="comment-box">
 					<?php 
-					echo '<div id="pseudo-comment"><strong>'.htmlspecialchars($date['pseudo']).'</strong> : '.htmlspecialchars($date['comment']).' </div>';
-					echo 'Signaler' ?>
+					echo '<div id="pseudo-comment"><strong>'.htmlspecialchars($date['pseudo']).'</strong> : '.htmlspecialchars($date['comment']).' </div><br />';
+					echo '<p><a href="index.php?action=reportComment&amp;id='.$date['id'].'" >Signaler</a></p>' ?>
 					</div><br />
 					<?php
 					}

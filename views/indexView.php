@@ -1,7 +1,7 @@
 <!-- Ceci sera la page d'accueil par défaut ! -->
 <?php
 if (!empty($_SESSION['pseudo'])) {
-    $title = 'Bienvenue ' . $_SESSION['pseudo'] . ' sur le blog de Jean Forteroche !';
+    $title = 'Bienvenue ' . htmlspecialchars($_SESSION['pseudo']) . ' sur le blog de Jean Forteroche !';
 } else {
     $title = 'Bienvenue sur le blog de Jean Forteroche !'; 
 }

@@ -60,10 +60,10 @@ function fullPost() {
     require('views/fullPost.php');
 }
 
-function editPost() {
+function editPost($postId) {
 
 	$postManager = new PostManager();
-	$post = $postManager->getFullPost($_GET['id']);
+	$post = $postManager->getFullPost($postId);
 
 	require('views/editPost.php');
 
@@ -93,19 +93,26 @@ function deletePost($postId) {
 
 }
 
-function writeComments() {
+function writeComments($postId, $pseudo, $comment) {
 
-	require('views/commentsWrite.php');
-	/* $comments = new CommentManager();
-	$comment = $comments->writeComments($postId, $pseudo, $comment);
-	
-    header('Location: index.php?action=fullPost&id=' . $postId); */
+	$comments = new CommentManager();
+	$comment = $comments->writeComment($postId, $pseudo, $comment);
+
+	if ($create === false) {
+        throw new Exception('Impossible de commenter !');
+    }
+    else {
+		header('Location: index.php?action=fullPost&id=' . $postId);
+	}	
 }
 
 function backoffice() {
 
 	$comments = new Backoffice();
+	$report = new CommentManager();
+
 	$comment = $comments->newComments();
+	$reported = $report->reportedCom();
 
 	require('views/backoffice.php');
 }
@@ -133,5 +140,35 @@ function updatePost($postId, $post) {
     }
     else {
 		header('Location: index.php?action=fullPost&id=' .$postId. '');
+	}
+}
+
+function commentReport($commentId) {
+	
+	$commentManager = new CommentManager();
+
+	$reporting = $commentManager->reportingCom($commentId);
+
+	if ($reporting === false) {
+		throw new Exception('Impossible de modifier l\'article !');
+    }
+    else {
+		header('Location: index.php');
+	}
+}
+
+function deleteComment($commentId) {
+
+	$backoffice = new Backoffice();
+
+	$deletethis = $backoffice->reportingComment($commentId);
+
+	if ($deletethis === false) {
+
+		throw new Exception('Impossible de supprimer le commentaire !');
+
+    }
+    else {
+		header('Location: index.php');
 	}
 }

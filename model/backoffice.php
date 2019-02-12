@@ -11,7 +11,16 @@ class Backoffice extends Manager {
 
         return $comments;
         
-    } public function reportComment () {
+    } public function reportingComment($commentId) {
+
+        $db = $this->dbConnect();
+
+        $reported = $db->prepare('DELETE FROM comments WHERE id = ?');
+        $reported->execute(array($commentId));
+
+        $confirmUpdate = '<div class="alert alert-success" role="alert">Votre article a édité !</div>';
+
+        return $confirmUpdate;
     
     }
 } 

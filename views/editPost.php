@@ -8,7 +8,7 @@ ob_start(); ?>
     <div id="write-block" class="row">
       <div id="write-tinymce" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <h2>Éditez votre billet :</h2>
-        <?php echo '<form action="index.php?action=editPost&amp;id=' . $_GET['id'] . '" method="post">'; ?>
+        <?php echo '<form action="index.php?action=updatePost&amp;id=' . $_GET['id'] . '" method="post">'; ?>
               <textarea name="elem1" rows="10"> <?php echo $post['post']; ?> </textarea>
               <input type="submit" name="submitupdate" class="btn btn-primary" value="Envoyer" />
         </form>

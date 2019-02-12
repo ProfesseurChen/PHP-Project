@@ -50,16 +50,16 @@ try {
 					
 		} elseif ($_GET['action'] == 'fullPost') {
 					
-					if (isset($_GET['id']) && $_GET['id'] > 0) {
+			if (isset($_GET['id']) && $_GET['id'] > 0) {
 							
-			fullPost();
+				fullPost();
 
-						} else {
+			} else {
 							
-							throw new Exception('Ce billet n\'existe pas ! Revenez à la page d\'accueil : <a href="index.php">ICI</a> ');
+				throw new Exception('Ce billet n\'existe pas ! Revenez à la page d\'accueil : <a href="index.php">ICI</a> ');
 							
-					}
-			} elseif ($_GET['action'] == 'editPost') {
+			}
+		} elseif ($_GET['action'] == 'updatePost') {
 
 			if(isset($_GET['id']) && $_GET['id'] > 0) {
 
@@ -70,13 +70,32 @@ try {
 				throw new Exception('Vous ne pouvez pas éditer un billet qui n\'existe pas ! Revenez à la page d\'accueil : <a href="index.php">ICI</a>');
 			}
 
+		} elseif ($_GET['action'] == 'editPost') {
+
+			if (isset($_GET['id']) && $_GET['id'] > 0) {
+
+				editPost($_GET['id']);
+
+			} else {
+
+				throw new Exception('Vous ne pouvez pas éditer un billet qui n\'existe pas ! Revenez à la page d\'accueil : <a href="index.php">ICI</a>');
+			}
+
+
 		} elseif ($_GET['action'] == 'addPost') {
 
 			addPost($_POST['elem1']);
 
-		} elseif ($_GET['action'] == 'writeComments') { 
+		} elseif ($_GET['action'] == 'writeComments') {
 
-			writeComments();
+			if (isset($_GET['id']) && $_GET['id'] > 0) {
+
+				writeComments($_GET['id'], $_POST['name-comment'], $_POST['comment']);
+
+			} else {
+
+				throw new Exception('Vous ne pouvez pas écrire un commentaire sur un billet qui n\'existe pas ! Revenez à la page d\'accueil : <a href="index.php">ICI</a>');
+			}
 
 		} elseif ($_GET['action'] == 'writePost') {
 					
@@ -86,9 +105,30 @@ try {
 					
 			formLogin();
 			
+		} elseif ($_GET['action'] == 'deleteCom') {
+
+			if (isset($_GET['id']) && $_GET['id'] > 0) {
+
+				deleteComment($_GET['id']); 
+			} else { 
+	
+				throw new Exception('Erreur : Vous ne pouvez pas signaler un commentaire qui n\'existe pas ! Revenez à la page d\'accueil : <a href="index.php">ICI</a>');
+			}
+
 		} elseif ($_GET['action'] == 'backoffice') {
 			
 			backoffice();
+
+		} elseif ($_GET['action'] == 'reportComment') {
+
+			if (isset($_GET['id']) && $_GET['id'] > 0) {
+
+				commentReport($_GET['id']);
+	
+			} else { 
+	
+				throw new Exception('Erreur : Vous ne pouvez pas signaler un commentaire qui n\'existe pas ! Revenez à la page d\'accueil : <a href="index.php">ICI</a>');
+			}
 
 		} elseif ($_GET['action'] == 'disconnect') {
 
@@ -100,6 +140,9 @@ try {
 
 			deletePost($_GET['id']);
 
+			} else { 
+	
+				throw new Exception('Erreur : Vous ne pouvez pas supprimer cet article ! Revenez à la page d\'accueil : <a href="index.php">ICI</a>');
 			}
 
 		} else { 

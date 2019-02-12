@@ -49,7 +49,7 @@ class PostManager extends Manager
     public function getFullPost($postId) { /* Affiche l'article en pleine page */
 
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, post, DATE_FORMAT(post_date, \'%d/%m/%Y à %Hh%imin%ss\') AS date_post FROM tickets WHERE id = ?');
+        $req = $db->prepare('SELECT id, post FROM tickets WHERE id = ?');
         $req->execute(array($postId));
 
         $fullpost = $req->fetch();
@@ -89,6 +89,8 @@ class PostManager extends Manager
         $confirmUpdate = '<div class="alert alert-success" role="alert">Votre article a édité !</div>';
 
        return $confirmUpdate;
+
+       header('Location: index.php?action=fullPost&amp;id='.$postId.'');
 
     }
 }
