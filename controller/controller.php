@@ -82,9 +82,12 @@ function disconnect() {
 function deletePost($postId) {
 
 	$postManager = new PostManager();
-	$delete = $postManager->deletePost($postId);
+	$commentManager = new CommentManager();
 
-	if ($delete === false) {
+	$delete = $postManager->deletePost($postId);
+	$deletecom = $commentManager->deleteCommentFromPost($postId);
+
+	if (($delete === false) && ($deletecom === false)) {
         throw new Exception('Impossible de supprimer le poste !');
     }
     else {
@@ -164,6 +167,22 @@ function deleteComment($commentId) {
 	$deletethis = $backoffice->reportingComment($commentId);
 
 	if ($deletethis === false) {
+
+		throw new Exception('Impossible de supprimer le commentaire !');
+
+    }
+    else {
+		header('Location: index.php');
+	}
+}
+
+function safeComment($postId) {
+
+	$commentManager = new CommentManager();
+
+	$itssafe = $commentManager->safeCom($postId);
+
+	if ($itssafe === false) {
 
 		throw new Exception('Impossible de supprimer le commentaire !');
 

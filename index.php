@@ -101,6 +101,17 @@ try {
 					
 			writeView();
 					
+		} elseif ($_GET['action'] == 'safeComment') {
+
+			if (isset($_GET['id']) && $_GET['id'] > 0) {
+
+				safeComment($_GET['id']);
+				
+			} else { 
+	
+				throw new Exception('Erreur : Erreur ! Revenez à la page d\'accueil : <a href="index.php">ICI</a>');
+			}
+
 		} elseif ($_GET['action'] == 'createLogin') {
 					
 			formLogin();

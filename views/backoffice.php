@@ -27,9 +27,8 @@ ob_start(); ?>
                 
                 while ($sign = $reported->fetch()) {
 
-                    echo $sign['id_post'];
                     echo '<p>'.htmlspecialchars($sign['pseudo']).' : '.htmlspecialchars($sign['comment']).'</p>';
-                    echo '<p>Modérer le commentaire : <a href="index.php?action=deleteCom&amp;id='.$sign['id_post'].'">Supprimer</a></p><br />';
+                    echo '<p>Modérer le commentaire : <a href="index.php?action=deleteCom&amp;id='.$sign['id'].'">Supprimer</a> / <a href="index.php?action=safeComment&amp;id='.$sign['id'].'">C\'est ok !</a></p><br />';
                 } 
             }  else {
                 echo '<p>Aucun commentaire signalé !</p>';

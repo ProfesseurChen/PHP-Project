@@ -49,4 +49,27 @@ class CommentManager extends Manager {
         return $req;
     }
 
+    public function deleteCommentFromPost($postId) {
+
+        $db = $this->dbConnect();
+
+        $delete = $db->prepare("DELETE FROM comments WHERE id_post = ?");
+        $delete->execute(array($postId));
+
+        return $delete;
+    }
+
+    public function safeCom($postId) {
+
+        $db = $this->dbConnect();
+
+        $report = 0;
+
+        $comment = $db->prepare("UPDATE comments SET report = ? WHERE id = ?");
+        $comment->execute(array($report, $postId));
+
+        return $comment;
+
+    }
+
 } 
