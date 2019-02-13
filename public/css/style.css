@@ -12,6 +12,13 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+@media (max-width: 991.98px) {
+    body p,  {
+    font-size: 0.9em;
+    }
+}
+
+
 /* Test pour template */
 /*
 article {
@@ -179,8 +186,8 @@ div#login-block.col-lg-4.col-md-4.col-sm-12.col-xs-12 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 50px;
-    margin-top: 50px;
+    margin-bottom: 5%;
+    margin-top: 5%;
 }
 
 div#login-asset {
@@ -195,6 +202,11 @@ div#login-asset {
     box-shadow: 2px 2px 1px 0px #656565;
     padding-top: 20px;
     padding-bottom: 20px; 
+}
+
+
+div#login-asset p {
+    text-align: center;
 }
 
 
@@ -242,8 +254,8 @@ div#posts-block.row {
 
 
 div#preview_post.col-lg-6.col-md-6.col-sm-12.col-xs-12 {
-    margin-bottom: 50px;
-    margin-top: 50px;
+    margin-bottom: 5%;
+    margin-top: 5%;
 }
 
 span#posts-title {

@@ -2,6 +2,7 @@
 
 require('controller/controller.php');
 
+session_start();
 
 try {
 	if (isset($_GET['action'])) {
@@ -10,6 +11,60 @@ try {
 					
 			homePost();
 					
+		} elseif ($_GET['action'] == 'login') {
+
+			if (isset($_POST['submit'])) {
+
+				if (empty($_POST['log-pseudo']) || empty($_POST['log-pass'])) {
+
+					throw new Exception('<p>Veuillez compléter tous les champs ! Recommencez : <a href="index.php">ICI</a></p>');
+
+				} else {
+				
+					$db = new PDO('mysql:host=localhost;dbname=project;charset=utf8', 'root', 'root');
+
+					$pass_hash = password_hash($_POST['log-pass'], PASSWORD_DEFAULT);
+
+					$req = $db->prepare('SELECT id FROM account WHERE pseudo = ?');
+					$req->execute(array($_POST['log-pseudo']));
+					$verif = $req->rowCount();
+
+					
+
+					if ($verif == 1) {
+
+						$req->closeCursor();
+	
+						$req2 = $db->prepare('SELECT password FROM account WHERE pseudo = ?');
+						$req2->execute(array($_POST['log-pseudo']));
+
+						$reqverif = $req2->fetch();
+						
+
+						if (password_verify($_POST['log-pass'], $reqverif['password'])){
+						
+							$_SESSION['pseudo'] = $_POST['log-pseudo'];
+
+							header('Location: index.php');
+
+						} else {
+
+							throw new Exception('Le mot de passe est incorrect :(');
+						}
+
+					} else {
+							
+						throw new Exception('<p>Les identifiants ne correspondent pas ! Recommencez : <a href="index.php">ICI</a> ou inscrivez-vous : <a href="index.php?action=createLogin">ICI</a></p>');
+	
+					}
+				}
+
+			} else { 
+
+				throw new Exception('<p>Cette action n\'est pas possible ! Veuillez retouner à l\'accueil: <a href="index.php">ICI</a></p>');
+
+			}
+
 		} elseif ($_GET['action'] == 'addLogin') { 
 
 			$db = new PDO('mysql:host=localhost;dbname=project;charset=utf8', 'root', 'root');
