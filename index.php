@@ -20,20 +20,14 @@ try {
 					throw new Exception('<p>Veuillez compléter tous les champs ! Recommencez : <a href="index.php">ICI</a></p>');
 
 				} else {
-				
+					
 					$db = new PDO('mysql:host=localhost;dbname=project;charset=utf8', 'root', 'root');
-
-					$pass_hash = password_hash($_POST['log-pass'], PASSWORD_DEFAULT);
 
 					$req = $db->prepare('SELECT id FROM account WHERE pseudo = ?');
 					$req->execute(array($_POST['log-pseudo']));
 					$verif = $req->rowCount();
 
-					
-
 					if ($verif == 1) {
-
-						$req->closeCursor();
 	
 						$req2 = $db->prepare('SELECT password FROM account WHERE pseudo = ?');
 						$req2->execute(array($_POST['log-pseudo']));
@@ -152,6 +146,10 @@ try {
 				throw new Exception('Vous ne pouvez pas écrire un commentaire sur un billet qui n\'existe pas ! Revenez à la page d\'accueil : <a href="index.php">ICI</a>');
 			}
 
+		} elseif ($_GET['action'] == 'listMembers') {
+
+			listmember();
+
 		} elseif ($_GET['action'] == 'writePost') {
 					
 			writeView();
@@ -165,6 +163,27 @@ try {
 			} else { 
 	
 				throw new Exception('Erreur : Erreur ! Revenez à la page d\'accueil : <a href="index.php">ICI</a>');
+			}
+
+		} elseif ($_GET['action'] == 'contactForm') {
+
+			if (isset($_POST['submit'])) {
+
+				if (empty($_POST['contact-name']) || empty($_POST['contact-mail']) || empty($_POST['contact-message'])) {
+					
+					throw new Exception('Erreur: vous n\'avez pas remplit tout le formulaire ! Recommencez <a href="index.php">ICI</a>');
+
+				} elseif (preg_match("#^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['contact-mail'])) {
+
+					addContact($_POST['contact-name'], $_POST['contact-mail'], $_POST['contact-message']);
+
+				} else {
+
+					throw new Exception('Votre mail n\'est pas au bon format ! Recommencez <a href="index.php">ICI</a>');
+				}
+			} else {
+
+				throw new Exception('Vous ne pouvez pas effectuer l\'action !');
 			}
 
 		} elseif ($_GET['action'] == 'createLogin') {
@@ -194,6 +213,16 @@ try {
 			} else { 
 	
 				throw new Exception('Erreur : Vous ne pouvez pas signaler un commentaire qui n\'existe pas ! Revenez à la page d\'accueil : <a href="index.php">ICI</a>');
+			}
+
+		} elseif ($_GET['action'] == 'deleteContactMessage') {
+
+			if (isset($_GET['id']) && $_GET['id'] > 0) {
+
+				deleteMessage($_GET['id']);
+			} else {
+
+				throw new Exception('Vous ne pouvez pas effectuer cette action !');
 			}
 
 		} elseif ($_GET['action'] == 'disconnect') {

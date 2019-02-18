@@ -2,14 +2,18 @@
         
 <?php ob_start(); ?>
 <div class="container-fluid">
+	<?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == '1') { ?>
 	<div id="admin-button-block" class="row">
 		<div id="admin-button" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		
 		<?php echo '<button type="button" class="btn btn-primary"><a href="index.php?action=editPost&amp;id=' . $post['id'] . '">Éditer</a></button>'; ?><br />
 		<?php echo '<button type="button" class="btn btn-danger"><a href="index.php?action=deletePost&amp;id=' . $post['id'] . '">Supprimer</a></button>'; ?><br />
 		</form>
 		
 		</div>
-	</div>
+	</div> <?php } else { 
+		
+	 } ?>
 	<div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<?php if (isset($confirmUpdate)) {
@@ -18,7 +22,7 @@
 
 			} else {
 				echo '';
-			}?>
+			} ?>
 		</div>
 	</div>
 	<div class="row">
@@ -28,8 +32,9 @@
 			
 		</div>			
 	</div>
-	<div class="row">
+	<div id="interaction" class="row">
 		<div id="block-reaction" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+			<div id="block1">
 			<h3>Laissez votre commentaire :</h3><br />
 			<p><strong>Connectez-vous et réagissez ! Votre avis nous intéresse ! </strong></p>
 
@@ -47,29 +52,41 @@
 				<p>Vous devez être inscrit et vous connecter pour pouvoir poster un message ! Ça se passe : <a href="index.php">ICI</a></p>
 
 			<?php } ?>
+			</div>
 		</div>
 
 		<div id="block-comment" class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-			<h3>Les 5 dernières réactions :</h3><br />
+			<div id="bloc2">
+			<h3>Vos réactions :</h3><br />
 
 			
 			<?php
-			if (!empty($comment)) {
-				while ($date = $comment->fetch())  { ?>
-					<div id="comment-box">
-					<?php 
-					echo '<div id="pseudo-comment"><strong>'.htmlspecialchars($date['pseudo']).'</strong> : '.htmlspecialchars($date['comment']).' </div><br />';
-					echo '<p><a href="index.php?action=reportComment&amp;id='.$date['id'].'" >Signaler</a></p>' ?>
-					</div><br />
-					<?php
+
+			$commentrow = $comment->rowCount();
+
+			if ($commentrow == 0) {
+
+				echo '<p>Il n\'y a pas encore de commentaire !</p>';
+			} else {
+
+				while ($date = $comment->fetch())  {
+				
+				echo '<div id="block-pseudo-comment">';
+				echo '<div id="pseudo-comment"><p>'.htmlspecialchars($date['pseudo']).'</p></div>';
+				echo '<span class="signet"></span>';
+				echo '<div id="comment-post-line">'.htmlspecialchars($date['comment']).' </div>';
+					if (isset($_SESSION['pseudo'])) {
+
+						echo '<span class="signet"></span>';
+						echo '<p><a href="index.php?action=reportComment&amp;id='.$date['id'].'" >Signaler</a></p>';
+						echo '</div>';
+					} else {
+						echo '</div>';
 					}
-
-				} else {
-
-					echo '<p>Il n\'y a pas encore de commentaire !</p>';
 				}
-			
+			}
 			?>
+			</div>
 
 		</div>
 	</div>

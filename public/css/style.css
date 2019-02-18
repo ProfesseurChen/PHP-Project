@@ -13,13 +13,14 @@ body {
 }
 
 @media (max-width: 991.98px) {
-    body p,  {
+    body p  {
     font-size: 0.9em;
     }
 }
 
 
 /* Test pour template */
+
 /*
 article {
   background-color: lightgreen;
@@ -213,6 +214,7 @@ div#login-asset p {
 
 /* SECTION ARTICLES */
 
+
 div#admin-button.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
     display: flex;
     justify-content: center;
@@ -254,8 +256,8 @@ div#posts-block.row {
 
 
 div#preview_post.col-lg-6.col-md-6.col-sm-12.col-xs-12 {
-    margin-bottom: 5%;
-    margin-top: 5%;
+    margin-bottom: 1%;
+    margin-top: 1%;
 }
 
 span#posts-title {
@@ -361,6 +363,67 @@ div#error-pic.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
     padding-bottom: 20px;
     text-align: center;
 }
+
+div#interaction.row {
+    background-color: #BFBFBF;
+}
+
+
+div#block1 {
+
+    box-shadow: 2px 2px 1px 0px #656565;
+    background-color:#edf0f4;
+    border-radius: 4px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.signet {
+    width: auto;
+    height: 1px;
+    border-top: 1px solid #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signet-foot {
+    width: auto;
+    height: 1px;
+    border-top: 1px dotted #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div#block-pseudo-comment {
+
+    box-shadow: 2px 2px 1px 0px #656565;
+    background-color:#edf0f4;
+    border-radius: 4px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+div#pseudo-comment p {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
 /* Le pied de page */
 
 

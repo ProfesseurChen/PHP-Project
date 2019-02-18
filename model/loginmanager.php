@@ -20,4 +20,13 @@ class LoginManager extends Manager {
         return $confirm;
 
     }
+
+    public function statsLogin() {
+
+        $db = $this->dbConnect();
+
+        $req = $db->query('SELECT * FROM account');
+
+        return $req;
+    }
 }

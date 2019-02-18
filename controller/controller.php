@@ -5,6 +5,7 @@ require_once('model/pagination.php');
 require_once('model/commentmanager.php');
 require_once('model/backoffice.php');
 require_once('model/loginmanager.php');
+require_once('model/contactform.php');
 
 
 
@@ -22,7 +23,9 @@ function getPostView() {
 
 
 	$postManager = new PostManager();
-	
+	$paginationManager = new Pagination();
+
+	$pagination = $paginationManager->countPage();
 
 	$post = $postManager->getPostView();
 
@@ -113,11 +116,25 @@ function backoffice() {
 
 	$comments = new Backoffice();
 	$report = new CommentManager();
+	$contactformManager = new ContactForm();
+	$postmanager = new PostManager();
+	$loginmanager = new LoginManager();
 
+	$commentspost = $report->statComment();
+	$statslogin = $loginmanager->statsLogin();
+	$nbpost = $postmanager->statsTickets();
+	$contact = $contactformManager->viewMessage();
 	$comment = $comments->newComments();
 	$reported = $report->reportedCom();
 
 	require('views/backoffice.php');
+}
+
+function listmember() {
+
+	$listmembermanager = new LoginManager();
+
+	$list = $listmembermanager->statsLogin();
 }
 
 function addLogin($pseudo, $mail, $pass) {
@@ -153,7 +170,7 @@ function commentReport($commentId) {
 	$reporting = $commentManager->reportingCom($commentId);
 
 	if ($reporting === false) {
-		throw new Exception('Impossible de modifier l\'article !');
+		throw new Exception('Impossible !');
     }
     else {
 		header('Location: index.php');
@@ -190,4 +207,35 @@ function safeComment($postId) {
     else {
 		header('Location: index.php');
 	}
+}
+
+function addContact($pseudo, $mail, $message) {
+
+	$contactformManager = new ContactForm();
+
+	$addmessage = $contactformManager->addMessage($pseudo, $mail, $message);
+
+	if ($addmessage === false) {
+
+		throw new Exception('Impossible d\'envoyer le message !');
+    }
+    else {
+		header('Location: index.php');
+	}
+}
+
+function deleteMessage($postId) {
+
+	$contactformManager = new ContactForm();
+
+	$deletemessage = $contactformManager->deleteMessage($postId);
+
+	if ($deletemessage === false) {
+
+		throw new Exception('Impossible de supprimer le message !');
+
+		} else {
+			
+		header('Location: index.php?action=backoffice');
+		}
 }

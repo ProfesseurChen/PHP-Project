@@ -50,11 +50,11 @@
       </div>  
       <div id="form-contact" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <p>Une demande ? une suggestion ? c'est par ici ! :) </p><br />            
-        <form id="anchor">
-          <input type="name" class="form-control" id="inputName" placeholder="Votre Nom" style="width: 200px;"><br />
-          <input type="mail" class="form-control" id="inputMail" placeholder="Votre email" style="width: 200px;"><br />
-          <input type="text" class="form-control" id="inputText" placeholder="Votre Message" maxlength="400" rows="3"><br />
-          <button type="submit" class="btn btn-primary">Envoyer !</button><br />
+        <form action="index.php?action=contactForm" method="post" id="anchor" enctype="multipart/form-data">
+          <input type="name" name="contact-name" class="form-control" id="inputName" placeholder="Votre Nom" style="width: 200px;" maxlengnth="20"><br />
+          <input type="mail" name="contact-mail" class="form-control" id="inputMail" placeholder="Votre email" style="width: 200px;" maxlenght="50"><br />
+          <textarea name="contact-message" class="form-control" maxlength="400" rows="5" style="width:300px;" class="mceNoEditor" placeholder="Votre message"></textarea><br />
+          <button type="submit" name="submit" class="btn btn-primary">Envoyer !</button><br />
           <p>Limité à 400 caractères</p>
         </form>          
       </div>         

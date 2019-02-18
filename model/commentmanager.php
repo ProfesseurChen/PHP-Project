@@ -72,4 +72,13 @@ class CommentManager extends Manager {
 
     }
 
+    public function statComment() {
+
+        $db = $this->dbConnect();
+
+        $req2 = $db->query('SELECT * FROM comments');
+
+        return $req2;
+    }
+
 } 

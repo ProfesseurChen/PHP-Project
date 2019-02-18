@@ -15,30 +15,36 @@ class PostManager extends Manager
         return $articles;
     }
 
-    public function getPostView() {  /* Je définis le nombre d'articles par pages et la pagination */
+    public function statsTickets() {
 
         $db = $this->dbConnect();
 
-        $postPerPage = 5; #Je veux 5 articles par page
-        $postsRequest = $db->query('SELECT id from tickets'); 
-        $posts = $postsRequest->rowCount(); #rowCount me permet de compter le nombre de lignes affectées par la dernière requête
+        $articles = $db->query('SELECT * FROM tickets');
 
-        $pages = ceil($posts/$postPerPage); #ceil me permet d'arrondir au nombre entier supérieur le plus proche
+        return $articles;
+    }
+
+    public function getPostView() {
+
+        $db = $this->dbConnect();
+
+        $postPerPage = 6;
+        $postsRequest = $db->query('SELECT id from tickets'); 
+        $posts = $postsRequest->rowCount();
+
+        $pages = ceil($posts/$postPerPage);
 
         if (isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GET['page'] <= $pages) {
 
-        $_GET['page'] = intval($_GET['page']);
-        $currentPage = $_GET['page'];
+            $_GET['page'] = intval($_GET['page']);
+            $currentPage = $_GET['page'];
 
-        } 
+        } else {
 
-        else 
-
-        {
             $currentPage = 1;
         }
 
-        $start = ($currentPage-1)*$postPerPage; #nombre d'articles total maximum disponible
+        $start = ($currentPage-1)*$postPerPage;
 
         $articles = $db->query('SELECT * FROM tickets ORDER BY id DESC LIMIT '.$start.','.$postPerPage);
 

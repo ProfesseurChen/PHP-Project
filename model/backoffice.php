@@ -11,7 +11,9 @@ class Backoffice extends Manager {
 
         return $comments;
         
-    } public function reportingComment($commentId) {
+    } 
+    
+    public function reportingComment($commentId) {
 
         $db = $this->dbConnect();
 
