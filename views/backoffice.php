@@ -2,42 +2,45 @@
 
 ob_start(); ?>
 
-<div class="container-fluid">
+<div id="backoffice" class="container-fluid">
 <h2>Panneau d'administration</h2>
-    <div class="row">
+    <div id="stats-admin" class="row">
         
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div id="stats" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <h3>Mon tableau de bord</h3>
             <?php $countpost = $nbpost->rowCount();
             $loginpost = $statslogin->rowCount();
             $nbcomment = $commentspost->rowCount();?>
             <p>Vous avez actuellement écrit : <?php echo $countpost ?> articles.</p>
             <p>Il y a <?php echo $loginpost ?> membres inscris !</p>
-            <a href="index.php?action=listMembers">Liste des inscrits</a><br />
             <p><?php echo $nbcomment?> commentaires ont été écris à ce jour.</p>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <h3>Les 10 derniers commentaires : </h3>
+            
+            <h3>Les 5 derniers commentaires : </h3>
             <?php 
 
             $commentrow = $comment->rowCount();
 
             if ($commentrow == 0) {
 
-                echo '<p>Pas de commentaires :( </p>';
+                echo '<p>Pas de commentaires :( </p></div>';
             } else {
 
                 while($data = $comment->fetch()) {
 
-                    echo '<p>'.htmlspecialchars($data['pseudo']).' : '.htmlspecialchars($data['comment']).'</p>';
-                    echo '<p>Voir l\'article commenté : <a href="index.php?action=fullPost&amp;id=' . $data['id_post'] . '">ICI</a></p><br />';
+                    echo '<div id="block-pseudo-comment-admin">';
+                    echo '<div id="line-comment"><p>'.htmlspecialchars($data['pseudo']).' : '.htmlspecialchars($data['comment']).'</p></div>';
+                    echo '<span class="signet-foot-admin"></span>';
+                    echo '<div id="line-admin"><p>Voir l\'article commenté : <a href="index.php?action=fullPost&amp;id=' . $data['id_post'] . '">ICI</a></p></div>';
+                    echo '</div>';
 
                 }
             }
             ?>
         </div>
     </div>
-    <div class="row">
+    <div id="interact-admin" class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <h3>Les commentaires signalés : </h3><br />
             <?php 
@@ -52,8 +55,11 @@ ob_start(); ?>
                 
                 while ($sign = $reported->fetch()) {
 
-                    echo '<p>'.htmlspecialchars($sign['pseudo']).' : '.htmlspecialchars($sign['comment']).'</p>';
-                    echo '<p>Modérer le commentaire : <a href="index.php?action=deleteCom&amp;id='.$sign['id'].'">Supprimer</a> / <a href="index.php?action=safeComment&amp;id='.$sign['id'].'">C\'est ok !</a></p><br />';
+                    echo '<div id="block-pseudo-comment-admin">';
+                    echo '<div id="line-comment"><p style="font-size:110%">'.htmlspecialchars($sign['pseudo']).' : '.htmlspecialchars($sign['comment']).'</p></div>';
+                    echo '<span class="signet-foot-admin"></span>';
+                    echo '<div id="line-admin"><p>Modérer le commentaire : <a href="index.php?action=deleteCom&amp;id='.$sign['id'].'">Supprimer</a> / <a href="index.php?action=safeComment&amp;id='.$sign['id'].'">C\'est ok !</a></p></div>';
+                    echo'</div>';
                 }
             }
 
@@ -73,10 +79,13 @@ ob_start(); ?>
         
                 while ($view = $contact->fetch()) {
 
-                    echo '<p>Nouveau message de : '.htmlspecialchars($view['pseudo']).'</p>';
+                    echo '<div id="block-pseudo-comment-admin">';
+                    echo '<div id="line-comment"><p>Nouveau message de : '.htmlspecialchars($view['pseudo']).'</p>';
                     echo '<p>Email de contact : '.htmlspecialchars($view['mail']).'</p>';
-                    echo '<p>Son message : '.htmlspecialchars($view['message']).'</p>';
-                    echo '<a href="index.php?action=deleteContactMessage&amp;id='.$view['id'].'"><strong>Supprimer le message</strong></a><br />';
+                    echo '<p>Son message : '.htmlspecialchars($view['message']).'</p></div>';
+                    echo '<span class="signet-foot-admin"></span>';
+                    echo '<div id="line-admin"><a href="index.php?action=deleteContactMessage&amp;id='.$view['id'].'"><strong>Supprimer le message</strong></a></div>';
+                    echo '</div>';
                 }
             }
             ?>

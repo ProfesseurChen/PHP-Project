@@ -8,6 +8,7 @@
     <link href="public/css/bootstrap.css" rel="stylesheet">
     <link href="public/css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="../public/pics.favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <script src="public/js/tinymce/tinymce.min.js" type="text/javascript"></script>
     <script>tinymce.init({mode:"exact", language:'fr_FR', elements:'elem1'});</script>
@@ -32,8 +33,12 @@
           <ul class="nav navbar-nav">
             <li> <a href="index.php">Accueil</a> </li>
             <li> <a href="index.php?action=postView">Mes articles</a> </li>
+            <?php if (isset($_SESSION['pseudo']) && $_SESSION['admin'] == 1) {?>
             <li> <a href="index.php?action=writePost">Édition</a> </li>
             <li> <a href="index.php?action=backoffice">Administration</a> </li>
+            <?php } else {
+              echo'';
+            }?>
             <li> <a href="#anchor">Contact</a></li>
           </ul>
             

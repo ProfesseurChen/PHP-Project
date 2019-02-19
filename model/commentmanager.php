@@ -7,7 +7,7 @@ class CommentManager extends Manager {
     public function getComments($postId) {
 
         $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT id, pseudo, comment FROM comments WHERE id_post = ? ORDER BY id DESC');
+        $comments = $db->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS date_comment FROM comments WHERE id_post = ? ORDER BY id DESC');
 		$comments->execute(array($postId));
 
 		return $comments;
@@ -39,7 +39,7 @@ class CommentManager extends Manager {
         $db = $this->dbConnect();
 
         $report = 0;
-        $req = $db->prepare('INSERT INTO comments(id_post, pseudo, comment, report) VALUES(:idpost, :pseudo, :comment, :report)');
+        $req = $db->prepare('INSERT INTO comments(id_post, pseudo, comment, comment_date, report) VALUES(:idpost, :pseudo, :comment, NOW(), :report)');
         $req->execute(array(
         'idpost' => $postId, 
         'pseudo' => $pseudo, 

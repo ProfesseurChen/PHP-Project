@@ -8,12 +8,14 @@ class LoginManager extends Manager {
 
         $db = $this->dbConnect();
         
-        $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
-        $req = $db->prepare('INSERT INTO account (pseudo,mail,password) VALUES (:pseudo,:mail,:password)');
+        $admin = 0;
+        $pass_hash = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
+        $req = $db->prepare('INSERT INTO account (pseudo,mail,password,admin) VALUES (:pseudo,:mail,:password,:admin)');
         $req->execute(array(
             'pseudo' => $pseudo,
             'mail' => $mail,
-            'password' => $pass_hash));
+            'password' => $pass_hash,
+            'admin' => $admin));
         
         $confirm = '<div class="alert alert-success" role="alert">Votre compte a été créé !</div>';
 

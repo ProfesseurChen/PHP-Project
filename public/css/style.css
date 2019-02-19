@@ -228,8 +228,8 @@ div#admin-button.col-lg-12.col-md-12.col-sm-12.col-xs-12 button {
 }
 
 div#block-reaction.col-lg-4.col-md-4.col-sm-12.col-xs-12, div#block-comment.col-lg-8.col-md-8.col-sm-12.col-xs-12 {
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 10px;
+    padding-right: 10px;
     padding-top: 2%;
     padding-bottom: 2%;
 }
@@ -281,6 +281,12 @@ div#preview_post.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
     padding-right: 10%;
 }
 
+div#preview_postview {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 div#preview_post.col-lg-12.col-md-12.col-sm-12.col-xs-12 a {
     font-size: 1.2em;
 }
@@ -388,7 +394,7 @@ div#block1 {
     justify-content: center;
     align-items: center;
     margin-top: 1px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -401,10 +407,30 @@ div#block1 {
     justify-content: center;
     align-items: center;
     margin-top: 1px;
-    margin-bottom: 20px;
+    margin-bottom: 2px;
     margin-left: auto;
     margin-right: auto;
 }
+
+.signet-foot-admin {
+    width: auto;
+    height: 1px;
+    border-top: 1px dotted #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1px;
+    margin-bottom: 20;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div#comment-post-line {
+    margin-bottom: 5px;
+}
+
+
+
 
 div#block-pseudo-comment {
 
@@ -483,7 +509,60 @@ div#login-form.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
 
 }
 
+/* ADMIN */
 
+div#backoffice.container-fluid h2 {
+
+    text-align: center;
+}
+
+div#stats-admin.row {
+    background-color: #FFFFFF;
+}
+
+div#stats-admin.row h3 {
+
+    text-align: center;
+}
+
+div#block-pseudo-comment-admin {
+
+    box-shadow: 2px 2px 1px 0px #656565;
+    background-color:#edf0f4;
+    border-radius: 4px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+div#line-comment {
+    margin-top: 10px;
+}
+
+div#line-admin {
+
+    margin-top: 10px;
+}
+
+
+div#stats.col-lg-6.col-md-6.col-sm-12.col-xs-12 {
+
+    text-align: center;
+    font-size: 1.2em;
+}
+
+div#interact-admin.row {
+
+    min-height: 400px;
+}
+
+div#interact-admin.row h3 {
+
+    text-align: center;
+}
 
 /* Le formulaire d'écriture */
 

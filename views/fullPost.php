@@ -2,7 +2,9 @@
         
 <?php ob_start(); ?>
 <div class="container-fluid">
-	<?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == '1') { ?>
+	<?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == '1') { ?> 
+
+
 	<div id="admin-button-block" class="row">
 		<div id="admin-button" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		
@@ -12,19 +14,8 @@
 		
 		</div>
 	</div> <?php } else { 
-		
+		echo '';
 	 } ?>
-	<div class="row">
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<?php if (isset($confirmUpdate)) {
-
-				echo $confirmUpdate;
-
-			} else {
-				echo '';
-			} ?>
-		</div>
-	</div>
 	<div class="row">
 		<div id="post-view" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
@@ -72,14 +63,21 @@
 				while ($date = $comment->fetch())  {
 				
 				echo '<div id="block-pseudo-comment">';
-				echo '<div id="pseudo-comment"><p>'.htmlspecialchars($date['pseudo']).'</p></div>';
+				echo '<div id="pseudo-comment"><p>'.htmlspecialchars($date['pseudo']).', le '.$date['date_comment'].'</p></div>';
 				echo '<span class="signet"></span>';
 				echo '<div id="comment-post-line">'.htmlspecialchars($date['comment']).' </div>';
 					if (isset($_SESSION['pseudo'])) {
 
-						echo '<span class="signet"></span>';
-						echo '<p><a href="index.php?action=reportComment&amp;id='.$date['id'].'" >Signaler</a></p>';
+						echo '<span class="signet-foot"></span>';
+						echo '<div id="pseudo-comment"><a href="index.php?action=reportComment&amp;id='.$date['id'].'" >Signaler</a>';
+						
+					} else { 
 						echo '</div>';
+					}
+					
+					if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+						echo ' / <a href="index.php?action=deleteCom&amp;id='.$date['id'].'" >Supprimer</a></div>';
+						echo '</div></div>';
 					} else {
 						echo '</div>';
 					}

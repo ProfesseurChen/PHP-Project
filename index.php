@@ -11,52 +11,56 @@ try {
 					
 			homePost();
 					
-		} elseif ($_GET['action'] == 'login') {
+		} elseif (!isset($_SESSION['pseudo']) && $_GET['action'] == 'login') {
 
 			if (isset($_POST['submit'])) {
 
 				if (empty($_POST['log-pseudo']) || empty($_POST['log-pass'])) {
-
+			
 					throw new Exception('<p>Veuillez compléter tous les champs ! Recommencez : <a href="index.php">ICI</a></p>');
-
+			
 				} else {
 					
 					$db = new PDO('mysql:host=localhost;dbname=project;charset=utf8', 'root', 'root');
-
+			
 					$req = $db->prepare('SELECT id FROM account WHERE pseudo = ?');
 					$req->execute(array($_POST['log-pseudo']));
 					$verif = $req->rowCount();
-
+			
 					if ($verif == 1) {
-	
-						$req2 = $db->prepare('SELECT password FROM account WHERE pseudo = ?');
+			
+						$req2 = $db->prepare('SELECT password, admin FROM account WHERE pseudo = ?');
 						$req2->execute(array($_POST['log-pseudo']));
-
+			
 						$reqverif = $req2->fetch();
+			
+						$pass = $_POST['log-pass'];
+						$passhash = $reqverif['password'];
 						
-
-						if (password_verify($_POST['log-pass'], $reqverif['password'])){
+			
+						if (password_verify($pass, $passhash)){
 						
 							$_SESSION['pseudo'] = $_POST['log-pseudo'];
-
+							$_SESSION['admin'] = $reqverif['admin'];
+			
 							header('Location: index.php');
-
+			
 						} else {
-
+			
 							throw new Exception('Le mot de passe est incorrect :(');
 						}
-
+			
 					} else {
 							
 						throw new Exception('<p>Les identifiants ne correspondent pas ! Recommencez : <a href="index.php">ICI</a> ou inscrivez-vous : <a href="index.php?action=createLogin">ICI</a></p>');
-	
+			
 					}
 				}
-
+			
 			} else { 
-
-				throw new Exception('<p>Cette action n\'est pas possible ! Veuillez retouner à l\'accueil: <a href="index.php">ICI</a></p>');
-
+			
+				throw new Exception('<p>Vous êtes déjà connecté ! Veuillez retouner à l\'accueil: <a href="index.php">ICI</a></p>');
+			
 			}
 
 		} elseif ($_GET['action'] == 'addLogin') { 
@@ -108,7 +112,7 @@ try {
 				throw new Exception('Ce billet n\'existe pas ! Revenez à la page d\'accueil : <a href="index.php">ICI</a> ');
 							
 			}
-		} elseif ($_GET['action'] == 'updatePost') {
+		} elseif (isset($_SESSION['admin']) && $_SESSION['admin'] == 1 && $_GET['action'] == 'updatePost') {
 
 			if(isset($_GET['id']) && $_GET['id'] > 0) {
 
@@ -119,7 +123,7 @@ try {
 				throw new Exception('Vous ne pouvez pas éditer un billet qui n\'existe pas ! Revenez à la page d\'accueil : <a href="index.php">ICI</a>');
 			}
 
-		} elseif ($_GET['action'] == 'editPost') {
+		} elseif (isset($_SESSION['admin']) && $_SESSION['admin'] == 1 && $_GET['action'] == 'editPost') {
 
 			if (isset($_GET['id']) && $_GET['id'] > 0) {
 
@@ -131,11 +135,11 @@ try {
 			}
 
 
-		} elseif ($_GET['action'] == 'addPost') {
+		} elseif (isset($_SESSION['admin']) && $_SESSION['admin'] == 1 && $_GET['action'] == 'addPost') {
 
 			addPost($_POST['elem1']);
 
-		} elseif ($_GET['action'] == 'writeComments') {
+		} elseif (isset($_SESSION['pseudo']) && $_GET['action'] == 'writeComments') {
 
 			if (isset($_GET['id']) && $_GET['id'] > 0) {
 
@@ -146,15 +150,11 @@ try {
 				throw new Exception('Vous ne pouvez pas écrire un commentaire sur un billet qui n\'existe pas ! Revenez à la page d\'accueil : <a href="index.php">ICI</a>');
 			}
 
-		} elseif ($_GET['action'] == 'listMembers') {
-
-			listmember();
-
-		} elseif ($_GET['action'] == 'writePost') {
+		}  elseif (isset($_SESSION['admin']) && $_SESSION['admin'] == 1 && $_GET['action'] == 'writePost') {
 					
 			writeView();
 					
-		} elseif ($_GET['action'] == 'safeComment') {
+		} elseif (isset($_SESSION['admin']) && $_SESSION['admin'] == 1 && $_GET['action'] == 'safeComment') {
 
 			if (isset($_GET['id']) && $_GET['id'] > 0) {
 
@@ -190,7 +190,7 @@ try {
 					
 			formLogin();
 			
-		} elseif ($_GET['action'] == 'deleteCom') {
+		} elseif (isset($_SESSION['admin']) && $_SESSION['admin'] == 1 && $_GET['action'] == 'deleteCom') {
 
 			if (isset($_GET['id']) && $_GET['id'] > 0) {
 
@@ -200,11 +200,11 @@ try {
 				throw new Exception('Erreur : Vous ne pouvez pas signaler un commentaire qui n\'existe pas ! Revenez à la page d\'accueil : <a href="index.php">ICI</a>');
 			}
 
-		} elseif ($_GET['action'] == 'backoffice') {
+		} elseif (isset($_SESSION['admin']) && $_SESSION['admin'] == 1 && $_GET['action'] == 'backoffice') {
 			
 			backoffice();
 
-		} elseif ($_GET['action'] == 'reportComment') {
+		} elseif (isset($_SESSION['pseudo']) && $_GET['action'] == 'reportComment') {
 
 			if (isset($_GET['id']) && $_GET['id'] > 0) {
 
@@ -215,7 +215,7 @@ try {
 				throw new Exception('Erreur : Vous ne pouvez pas signaler un commentaire qui n\'existe pas ! Revenez à la page d\'accueil : <a href="index.php">ICI</a>');
 			}
 
-		} elseif ($_GET['action'] == 'deleteContactMessage') {
+		} elseif (isset($_SESSION['admin']) && $_SESSION['admin'] == 1 && $_GET['action'] == 'deleteContactMessage') {
 
 			if (isset($_GET['id']) && $_GET['id'] > 0) {
 
@@ -225,11 +225,11 @@ try {
 				throw new Exception('Vous ne pouvez pas effectuer cette action !');
 			}
 
-		} elseif ($_GET['action'] == 'disconnect') {
+		} elseif (isset($_SESSION['pseudo']) && $_GET['action'] == 'disconnect') {
 
 			disconnect();
 
-		} elseif ($_GET['action'] == 'deletePost') {
+		} elseif (isset($_SESSION['admin']) && $_SESSION['admin'] == 1 && $_GET['action'] == 'deletePost') {
 
 			if (isset($_GET['id']) && $_GET['id'] > 0) {
 

@@ -14,6 +14,7 @@ function homePost() {
 	
 	$postManager = new PostManager();
 	$posts = $postManager->getTicketsHome();
+	
 
 	require('views/indexView.php');
 
@@ -154,6 +155,7 @@ function updatePost($postId, $post) {
 	$postManager = new PostManager();
 
 	$updatePost = $postManager->updateFullPost($postId, $post);
+
 
 	if ($updatPost === false) {
 		throw new Exception('Impossible de modifier l\'article !');
