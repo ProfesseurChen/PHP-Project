@@ -70,17 +70,19 @@
 
 						echo '<span class="signet-foot"></span>';
 						echo '<div id="pseudo-comment"><a href="index.php?action=reportComment&amp;id='.$date['id'].'" >Signaler</a>';
+
+						if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+							echo ' / <a href="index.php?action=deleteCom&amp;id='.$date['id'].'" >Supprimer</a></div>';
+							echo '</div></div>';
+						} else {
+							echo '</div></div>';
+						}
 						
 					} else { 
 						echo '</div>';
 					}
 					
-					if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
-						echo ' / <a href="index.php?action=deleteCom&amp;id='.$date['id'].'" >Supprimer</a></div>';
-						echo '</div></div>';
-					} else {
-						echo '</div>';
-					}
+					
 				}
 			}
 			?>
