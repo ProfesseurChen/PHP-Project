@@ -8,8 +8,8 @@
 	<div id="admin-button-block" class="row">
 		<div id="admin-button" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		
-		<?php echo '<button type="button" class="btn btn-primary"><a href="index.php?action=editPost&amp;id=' . $post['id'] . '">Éditer</a></button>'; ?><br />
-		<?php echo '<button type="button" class="btn btn-danger"><a href="index.php?action=deletePost&amp;id=' . $post['id'] . '">Supprimer</a></button>'; ?><br />
+		<a href="index.php?action=editPost&amp;id=<?= $post['id'] ?>"><button type="button" class="btn btn-primary">Éditer</button></a><br />
+		<a href="index.php?action=deletePost&amp;id=<?= $post['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button></a><br />
 		</form>
 		
 		</div>
@@ -31,8 +31,8 @@
 
 			
 			<?php
-			if (isset($_SESSION['pseudo'])) {
-				echo '<form action="index.php?action=writeComments&amp;id='.$_GET['id'].'" method="post" enctype="multipart/form-data">'; ?>
+			if (isset($_SESSION['pseudo'])) { ?>
+				<form action="index.php?action=writeComments&amp;id=<?= _GET['id'] ?>" method="post" enctype="multipart/form-data">
 				<p>Votre pseudo : <?php echo $_SESSION['pseudo']; ?></p>
 				<input type="hidden" name="name-comment" value="<?= $_SESSION['pseudo'] ?>" />
 				<textarea name="comment" class="form-control" rows="5" style="width:300px;" class="mceNoEditor"> </textarea><br />

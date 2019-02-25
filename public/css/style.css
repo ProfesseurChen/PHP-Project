@@ -568,7 +568,7 @@ div#backoffice.container-fluid h2 {
 
 div#stats-admin.row {
     background-color: #FFFFFF;
-    min-height: 350px;
+    min-height: 250px;
     display: flex;
     justify-content: center;
     align-items: center;

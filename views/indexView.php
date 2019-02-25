@@ -51,7 +51,7 @@ if (!empty($_SESSION['pseudo'])) {
                 <div id="login-asset">
                     <p style="font-weight: bold">Bienvenue <?php echo htmlspecialchars($_SESSION['pseudo']); ?> !</p>
                     <p>Vous pouvez cliquer ici pour vous déconnecter </p>
-                    <button type="button" class="btn btn-primary"><a href="views/disconnect.php">Se déconnecter</a></button>
+                    <a href="views/disconnect.php"><button type="button" class="btn btn-primary">Se déconnecter</button></a>
                 </div>
             </div>           
         <?php

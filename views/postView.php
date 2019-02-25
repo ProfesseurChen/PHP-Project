@@ -42,7 +42,7 @@
                 <div id="preview_postview" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <?php $preview = substr($home['post'], 0, 300); ?>
                     <p><?php echo $preview ?> . . . </p><br /> 
-                    <button type="button" class="btn btn-primary"><a href="index.php?action=fullPost&amp;id=<?= $home['id'] ?>">Lisez la suite !</a></button><br />
+                    <a href="index.php?action=fullPost&amp;id=<?= $home['id'] ?>"><button type="button" class="btn btn-primary">Lisez la suite !</button></a><br />
                 </div>
 
                 <?php
