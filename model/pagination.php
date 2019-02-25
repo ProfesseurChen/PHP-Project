@@ -11,9 +11,9 @@ class Pagination extends Manager {
         $db = $this->dbConnect();
 
         $postsRequest = $db->query('SELECT id from tickets'); 
-        $posts = $postsRequest->rowCount();
-        
+        $posts = $postsRequest->rowCount();        
         return $posts;
+        
     }
 }
 

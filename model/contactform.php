@@ -14,7 +14,6 @@ class ContactForm extends Manager {
             'mail' => $mail,
             'message' => $message
         ));
-
         return $add;
 
     }
@@ -24,7 +23,6 @@ class ContactForm extends Manager {
         $db = $this->dbConnect();
 
         $req = $db->query('SELECT * FROM contact ORDER BY ID DESC');
-
         return $req;
 
     }
@@ -35,7 +33,7 @@ class ContactForm extends Manager {
 
         $req2 = $db->prepare('DELETE FROM contact WHERE id = ?');
         $req2->execute(array($postId));
-
         return $req2;
+
     }
 }

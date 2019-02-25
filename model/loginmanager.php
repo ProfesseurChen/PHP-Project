@@ -18,7 +18,6 @@ class LoginManager extends Manager {
             'admin' => $admin));
         
         $confirm = '<div class="alert alert-success" role="alert">Votre compte a été créé !</div>';
-
         return $confirm;
 
     }
@@ -28,7 +27,7 @@ class LoginManager extends Manager {
         $db = $this->dbConnect();
 
         $req = $db->query('SELECT * FROM account');
-
         return $req;
+        
     }
 }

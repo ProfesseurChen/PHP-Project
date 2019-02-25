@@ -49,19 +49,27 @@
     <?= $home ?>
 
     <div id="footer" class="row">
-      <div id ="about-me" class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+      <div id ="about-me" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <h3>À propos de moi : </h3><br />
-        <p>Qui cum venisset ob haec festinatis itineribus Antiochiam, praestrictis palatii ianuis, contempto Caesare, quem videri decuerat, ad praetorium cum pompa sollemni perrexit morbosque diu causatus nec regiam introiit nec processit in publicum, sed abditus multa in eius moliebatur exitium addens quaedam relationibus supervacua, quas subinde dimittebat ad principem.</p><br />
+        <p>Jean Forteroche est un célèbre écrivain connu pour ses nouvelles et billets d'humeur dans des grandes revues. " Billet simple pour l'Alaska " est sa prochaine publication, et pour la première fois, il a choisi la publication gratuite par l'intermédiaire d'un blog !</p><br />
       </div>  
-      <div id="form-contact" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <div id="form-contact" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+        <?php if (isset($_SESSION['pseudo'])) { ?>
         <p>Une demande ? une suggestion ? c'est par ici ! :) </p><br />            
         <form action="index.php?action=contactForm" method="post" id="anchor" enctype="multipart/form-data">
-          <input type="name" name="contact-name" class="form-control" id="inputName" placeholder="Votre Nom" style="width: 200px;" maxlengnth="20"><br />
-          <input type="mail" name="contact-mail" class="form-control" id="inputMail" placeholder="Votre email" style="width: 200px;" maxlenght="50"><br />
+          <p>Votre pseudo : <?php echo $_SESSION['pseudo']; ?></p>
+          <input type="hidden" name="contact-name" value="<?= $_SESSION['pseudo'] ?>" class="form-control" id="inputName"><br />
+          <input type="mail" name="contact-mail" class="form-control" id="inputMail" placeholder="Votre email" style="width: 200px;" maxlenght="50" /><br />
           <textarea name="contact-message" class="form-control" maxlength="400" rows="5" style="width:300px;" class="mceNoEditor" placeholder="Votre message"></textarea><br />
           <button type="submit" name="submit" class="btn btn-primary">Envoyer !</button><br />
           <p>Limité à 400 caractères</p>
-        </form>          
+        </form> 
+        <?php 
+        } else { ?>
+        <p>Une suggestion ? un avis ? Vous voulez m'envoyer un message privé ? Connectez vous et vous pourrez accéder au formulaire ici même !</p><br />
+        <p>J'attends votre message avec impatience !</p>
+        <?php } ?>  
       </div>         
     </div>
   </body>

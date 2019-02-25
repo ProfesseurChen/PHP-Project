@@ -13,9 +13,9 @@ function homePost() {
 
 	
 	$postManager = new PostManager();
+
 	$posts = $postManager->getTicketsHome();
 	
-
 	require('views/indexView.php');
 
 }
@@ -27,7 +27,6 @@ function getPostView() {
 	$paginationManager = new Pagination();
 
 	$pagination = $paginationManager->countPage();
-
 	$post = $postManager->getPostView();
 
 	require('views/postView.php');
@@ -36,6 +35,7 @@ function getPostView() {
 function addPost($post) {
 
 	$postManager = new Postmanager();
+
 	$addpost = $postManager->addPost($post);
 
 	if ($addpost === false) {
@@ -51,14 +51,13 @@ function writeView() {
 	require('views/writePost.php');
 }
 
-function fullPost() {
+function fullPost($postId) {
 	
 	$postManager = new PostManager();
 	$commentManager = new CommentManager();
 
-	$comment = $commentManager->getComments($_GET['id']);
-
-	$post = $postManager->getFullPost($_GET['id']);
+	$comment = $commentManager->getComments($postId);
+	$post = $postManager->getFullPost($postId);
 	
     
     require('views/fullPost.php');
@@ -67,6 +66,7 @@ function fullPost() {
 function editPost($postId) {
 
 	$postManager = new PostManager();
+
 	$post = $postManager->getFullPost($postId);
 
 	require('views/editPost.php');
@@ -103,6 +103,7 @@ function deletePost($postId) {
 function writeComments($postId, $pseudo, $comment) {
 
 	$comments = new CommentManager();
+
 	$comment = $comments->writeComment($postId, $pseudo, $comment);
 
 	if ($create === false) {
@@ -141,6 +142,7 @@ function listmember() {
 function addLogin($pseudo, $mail, $pass) {
 
 	$createlogin = new LoginManager();
+	
 	$create = $createlogin->newLogin($pseudo, $mail, $pass);
 
 	if ($create === false) {
@@ -191,7 +193,7 @@ function deleteComment($commentId) {
 
     }
     else {
-		header('Location: index.php');
+		header('Location: index.php?action=backoffice');
 	}
 }
 
@@ -207,7 +209,7 @@ function safeComment($postId) {
 
     }
     else {
-		header('Location: index.php');
+		header('Location: index.php?action=backoffice');
 	}
 }
 

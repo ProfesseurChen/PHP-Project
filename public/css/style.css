@@ -71,12 +71,9 @@ article {
 
 
 
-div#logo 
-
-
 
 header {
-	height: 120px;
+	height: 70px;
     background-color: #FFFFFF;
 }
 
@@ -114,7 +111,9 @@ li {
     width: 110px;
 }
 
-
+img {
+    height: 70px;
+}
 
 
 
@@ -123,7 +122,10 @@ li {
 
 
 div#details.row {
-    align-items: center;
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
 }
 
 
@@ -183,12 +185,12 @@ div#about-blog p {
 }
 
 
-div#login-block.col-lg-4.col-md-4.col-sm-12.col-xs-12 {
+div#login-block.col-lg-6.col-md-6.col-sm-12.col-xs-12 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 5%;
-    margin-top: 5%;
+    margin-bottom: 2%;
+    margin-top: 2%;
 }
 
 div#login-asset {
@@ -214,6 +216,11 @@ div#login-asset p {
 
 /* SECTION ARTICLES */
 
+span#date {
+    font-size: 12px;
+    font-style: italic;
+}
+
 
 div#admin-button.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
     display: flex;
@@ -234,13 +241,36 @@ div#block-reaction.col-lg-4.col-md-4.col-sm-12.col-xs-12, div#block-comment.col-
     padding-bottom: 2%;
 }
 
+div#block-preview {
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 767px) {
+
+    div#block-preview {
+        flex-direction: column; 
+    }
+
+    div#details.row {
+        flex-direction: column;
+    }
+
+    div#footer.row {
+        flex-direction: column;
+    }
+
+}
+
 div#block-reaction.col-lg-4.col-md-4.col-sm-12.col-xs-12 h3, div#block-comment.col-lg-8.col-md-8.col-sm-12.col-xs-12 h3 {
     text-align: center;
 }
 
 div#post-view.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 15%;
+    padding-right: 15%;
     padding-bottom: 2%;
 }
 
@@ -254,11 +284,6 @@ div#posts-block.row {
     padding-right: 7%;
 }
 
-
-div#preview_post.col-lg-6.col-md-6.col-sm-12.col-xs-12 {
-    margin-bottom: 1%;
-    margin-top: 1%;
-}
 
 span#posts-title {
     font-size: 50px;
@@ -281,11 +306,15 @@ div#preview_post.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
     padding-right: 10%;
 }
 
+div#preview_postview p {
+
+    hyphens: auto;
+}
 div#preview_postview {
     padding-left: 30px;
     padding-right: 30px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 div#preview_post.col-lg-12.col-md-12.col-sm-12.col-xs-12 a {
     font-size: 1.2em;
@@ -330,17 +359,27 @@ div#preview_post.col-lg-6.col-md-6.col-sm-12.col-xs-12 p, div#preview_post.col-l
     padding-right: 10%;
 }
 
-div#preview-title.row {
-    background: url(../pics/sky.jpg) no-repeat center;
-    background-size: cover;
+div#preview_post.col-lg-6.col-md-6.col-sm-12.col-xs-12 {
+    min-height: 500px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 500px;
 }
 
-div#preview-title.row h2, div#preview-title.row p {
+div#preview-child {
+    background: url(../pics/moutain-preview.jpeg) no-repeat center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+div#preview-child h2, div#preview-child p {
     color: #ffffff;
     text-align: center;
 }
@@ -372,6 +411,9 @@ div#error-pic.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
 
 div#interaction.row {
     background-color: #BFBFBF;
+    padding-left: 5%;
+    padding-right: 5%;
+    min-height: 400px;
 }
 
 
@@ -456,7 +498,7 @@ div#pseudo-comment p {
 
 
 
-div#about-me.col-lg-8.col-md-8.col-sm-12.col-xs-12 p, div#about-me.col-lg-8.col-md-8.col-sm-12.col-xs-12 h3, div#form-contact.col-lg-4.col-md-4.col-sm-12.col-xs-12 p {
+div#about-me.col-lg-6.col-md-6.col-sm-12.col-xs-12 p, div#about-me.col-lg-6.col-md-6.col-sm-12.col-xs-12 h3, div#form-contact.col-lg-6.col-md-6.col-sm-12.col-xs-12 p {
 	color: #ffffff;
 }
 
@@ -466,12 +508,20 @@ input#inputText.form-control {
 
 div#footer.row {
 
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #222222;
 }
 
-div#form-contact.col-lg-4.col-lg-4.col-sm-4.col-xs-12 {
+div#form-contact.col-lg-6.col-lg-6.col-sm-12.col-xs-12 {
     margin-top: 20px;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 div#about-me.col-lg-12.col-md-12.col-sm-12.col-xs-12 h3 {
@@ -479,7 +529,7 @@ div#about-me.col-lg-12.col-md-12.col-sm-12.col-xs-12 h3 {
     text-align: center;
 }
 
-div#about-me.col-lg-8.col-lg-8.col-sm-12.col-xs-12, div#form-contact.col-lg-4.col-lg-4.col-sm-12.col-xs-12 {
+div#about-me.col-lg-6.col-lg-6.col-sm-12.col-xs-12, div#form-contact.col-lg-4.col-lg-4.col-sm-12.col-xs-12 {
     padding-top: 20px;
     padding-right: 5%;
     padding-bottom: 20px;
@@ -518,6 +568,11 @@ div#backoffice.container-fluid h2 {
 
 div#stats-admin.row {
     background-color: #FFFFFF;
+    min-height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 div#stats-admin.row h3 {
@@ -536,7 +591,22 @@ div#block-pseudo-comment-admin {
     margin-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
+    width: 60%;
 }
+
+div#block-pseudo-comment {
+
+    box-shadow: 2px 2px 1px 0px #656565;
+    background-color:#edf0f4;
+    border-radius: 4px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 
 div#line-comment {
     margin-top: 10px;
@@ -547,8 +617,25 @@ div#line-admin {
     margin-top: 10px;
 }
 
+div#last-comments.row h3 {
+    text-align: center;
+}
 
-div#stats.col-lg-6.col-md-6.col-sm-12.col-xs-12 {
+div#last-comments-block.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-width: 300px;
+}
+
+div#last-comments.row {
+
+    min-width: 300px;
+ 
+}
+
+div#stats.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
 
     text-align: center;
     font-size: 1.2em;
@@ -561,6 +648,10 @@ div#interact-admin.row {
 
 div#interact-admin.row h3 {
 
+    text-align: center;
+}
+
+div#no-content {
     text-align: center;
 }
 

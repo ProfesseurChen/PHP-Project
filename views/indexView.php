@@ -15,14 +15,14 @@ if (!empty($_SESSION['pseudo'])) {
 
         <div id="summary" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div id="summary-content">
-            <h2>Bienvenue sur mon blog personnel !</h2>
-            <p>Metuentes igitur idem latrones Lycaoniam !</p><br />
+            <h2>" Billet simple pour l'Alaska "</h2>
+            <p>Bienvenu sur mon blog personnel ! </p><br />
             </div>
         </div>
 
     </div>
     <div  id="details" class="row">
-        <div id="about-blog" class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <div id="about-blog" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <h2>Que trouverez vous ici ?</h2>
             <p>Ex turba vero imae sortis et paupertinae in tabernis aliqui pernoctant vinariis, non nulli velariis umbraculorum theatralium latent, quae Campanam imitatus lasciviam Catulus in aedilitate sua suspendit omnium primus; aut pugnaciter aleis certant turpi sono fragosis naribus introrsum reducto spiritu concrepantes; aut quod est studiorum omnium maximum ab ortu lucis ad vesperam sole fatiscunt vel pluviis, per minutias aurigarum equorumque praecipua vel delicta scrutantes.</p><br />
             <p>Incenderat autem audaces usque ad insaniam homines ad haec, quae nefariis egere conatibus, Luscus quidam curator urbis subito visus: eosque ut heiulans baiolorum praecentor ad expediendum quod orsi sunt incitans vocibus crebris. qui haut longe postea ideo vivus exustus est.</p><br />
@@ -32,7 +32,7 @@ if (!empty($_SESSION['pseudo'])) {
 
         if (empty($_SESSION['pseudo'])) {
         ?>
-        <div id="login-block" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div id="login-block" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div id="login-asset">
             <h4>Vous avez un compte ?</h4><br />
             <p><strong>Connectez-vous !</strong></p>
@@ -47,7 +47,7 @@ if (!empty($_SESSION['pseudo'])) {
         <?php
         } else { ?>
         
-            <div id="login-block" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div id="login-block" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div id="login-asset">
                     <p style="font-weight: bold">Bienvenue <?php echo htmlspecialchars($_SESSION['pseudo']); ?> !</p>
                     <p>Vous pouvez cliquer ici pour vous déconnecter </p>
@@ -58,17 +58,16 @@ if (!empty($_SESSION['pseudo'])) {
             } ?>
     </div>
     <div id="preview-title" class="row">
-        <div id="preview-child" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h2>Un aperçu de mes articles !</h2>
-            <p>Vous pouvez en trouvez d'autres dans la sections "Mes articles" dans la barre de menu.</p><br />
+        <div id="preview-child" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <h2>Le dernier épisode !</h2><br />
+            <p>Vous pouvez en trouvez d'autres dans la sections "Mes articles" dans la barre de menu.</p>
             <p> N'hésitez pas à y jeter un oeil, et faire vos retours dans les commentaires !</p>
         </div>
-    </div>
-    <div id="block-preview" class="row">
+
        <?php while ($home = $posts->fetch()) 
       {
         ?>
-        <div id ="preview_post" class="col-lg-6 col-md-6 col-sm-12 col-xs-12"> <?php $preview = substr($home['post'], 0, 250);
+        <div id ="preview_post" class="col-lg-6 col-md-6 col-sm-12 col-xs-12"> <?php $preview = substr($home['post'], 0, 450);
         echo $preview . ' . . . <br /><a href="index.php?action=fullPost&amp;id=' . $home['id'] . '"><br />Lire la suite !</a><br />' ?> </div>
 
       <?php

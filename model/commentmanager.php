@@ -7,10 +7,11 @@ class CommentManager extends Manager {
     public function getComments($postId) {
 
         $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS date_comment FROM comments WHERE id_post = ? ORDER BY id DESC');
-		$comments->execute(array($postId));
 
-		return $comments;
+        $comments = $db->prepare('SELECT id, pseudo, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%im\') AS date_comment FROM comments WHERE id_post = ? ORDER BY id DESC');
+		$comments->execute(array($postId));
+        return $comments;
+        
     }
 
     public function reportingCom($commentId) {
@@ -21,8 +22,8 @@ class CommentManager extends Manager {
 
         $comments = $db->prepare('UPDATE comments SET report = ? WHERE id = '.$commentId.'');
         $comments->execute(array($valuereport));
-
         return $comments;
+
     }
 
     public function reportedCom() {
@@ -30,8 +31,8 @@ class CommentManager extends Manager {
         $db = $this->dbConnect();
 
         $reported = $db->query('SELECT * FROM comments WHERE report= 1');
-
         return $reported;
+
     }
 
     public function writeComment($postId, $pseudo, $comment) {
@@ -45,8 +46,8 @@ class CommentManager extends Manager {
         'pseudo' => $pseudo, 
         'comment' => $comment,
         'report' => $report));
-
         return $req;
+        
     }
 
     public function deleteCommentFromPost($postId) {
@@ -55,8 +56,8 @@ class CommentManager extends Manager {
 
         $delete = $db->prepare("DELETE FROM comments WHERE id_post = ?");
         $delete->execute(array($postId));
-
         return $delete;
+
     }
 
     public function safeCom($postId) {
@@ -64,10 +65,8 @@ class CommentManager extends Manager {
         $db = $this->dbConnect();
 
         $report = 0;
-
         $comment = $db->prepare("UPDATE comments SET report = ? WHERE id = ?");
         $comment->execute(array($report, $postId));
-
         return $comment;
 
     }
@@ -77,8 +76,8 @@ class CommentManager extends Manager {
         $db = $this->dbConnect();
 
         $req2 = $db->query('SELECT * FROM comments');
-
         return $req2;
+
     }
 
 } 

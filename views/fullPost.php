@@ -34,7 +34,7 @@
 			if (isset($_SESSION['pseudo'])) {
 				echo '<form action="index.php?action=writeComments&amp;id='.$_GET['id'].'" method="post" enctype="multipart/form-data">'; ?>
 				<p>Votre pseudo : <?php echo $_SESSION['pseudo']; ?></p>
-				<?php echo '<input type="hidden" name="name-comment" value="'.$_SESSION['pseudo'].'" />'; ?>
+				<input type="hidden" name="name-comment" value="<?= $_SESSION['pseudo'] ?>" />
 				<textarea name="comment" class="form-control" rows="5" style="width:300px;" class="mceNoEditor"> </textarea><br />
 				<input type="submit" class="btn btn-primary" value="Envoyer" />
 				</form> 
@@ -55,31 +55,37 @@
 
 			$commentrow = $comment->rowCount();
 
-			if ($commentrow == 0) {
+			if ($commentrow == 0) { ?>
 
-				echo '<p>Il n\'y a pas encore de commentaire !</p>';
+				<p>Il n'y a pas encore de commentaire !</p>
+				<?php
 			} else {
 
-				while ($date = $comment->fetch())  {
+				while ($date = $comment->fetch())  { ?>
 				
-				echo '<div id="block-pseudo-comment">';
-				echo '<div id="pseudo-comment"><p>'.htmlspecialchars($date['pseudo']).', le '.$date['date_comment'].'</p></div>';
-				echo '<span class="signet"></span>';
-				echo '<div id="comment-post-line">'.htmlspecialchars($date['comment']).' </div>';
-					if (isset($_SESSION['pseudo'])) {
+				<div id="block-pseudo-comment">
+					<div id="pseudo-comment"><p><?= htmlspecialchars($date['pseudo']) ?></p>
+					<span id="date">Le <?= $date['date_comment'] ?></span></div>
+					<span class="signet"></span>
+					<div id="comment-post-line"><?= htmlspecialchars($date['comment']) ?></div>
+					<?php if (isset($_SESSION['pseudo'])) { ?>
 
-						echo '<span class="signet-foot"></span>';
-						echo '<div id="pseudo-comment"><a href="index.php?action=reportComment&amp;id='.$date['id'].'" >Signaler</a>';
+						<span class="signet-foot"></span>
+						<div id="pseudo-comment"><a href="index.php?action=reportComment&amp;id=<?= $date['id'] ?>" >Signaler</a>
 
-						if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
-							echo ' / <a href="index.php?action=deleteCom&amp;id='.$date['id'].'" >Supprimer</a></div>';
-							echo '</div></div>';
-						} else {
-							echo '</div></div>';
+						<?php 
+						if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) { ?>
+							 / <a href="index.php?action=deleteCom&amp;id=<?= $date['id'] ?>" >Supprimer</a></div>
+							</div> 
+							<?php 
+						} else { ?>
+							</div></div> 
+							<?php
 						}
 						
-					} else { 
-						echo '</div>';
+					} else { ?>
+						</div>
+						<?php
 					}
 					
 					

@@ -8,7 +8,6 @@ class Backoffice extends Manager {
 
         $db = $this->dbConnect();
         $comments = $db->query('SELECT * FROM comments ORDER BY ID DESC LIMIT 0, 5');
-
         return $comments;
         
     } 
@@ -18,8 +17,7 @@ class Backoffice extends Manager {
         $db = $this->dbConnect();
 
         $reported = $db->prepare('DELETE FROM comments WHERE id = ?');
-        $reported->execute(array($commentId));
-        
+        $reported->execute(array($commentId));        
         return $reported;
     
     }
