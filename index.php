@@ -197,7 +197,7 @@ try {
 				deleteComment($_GET['id']); 
 			} else { 
 	
-				throw new Exception('Erreur : Vous ne pouvez pas signaler un commentaire qui n\'existe pas ! Revenez à la page d\'accueil : <a href="index.php">ICI</a>');
+				throw new Exception('Erreur : Vous ne pouvez pas supprimer un commentaire qui n\'existe pas ! Revenez à la page d\'accueil : <a href="index.php">ICI</a>');
 			}
 
 		} elseif (isset($_SESSION['admin']) && $_SESSION['admin'] == 1 && $_GET['action'] == 'backoffice') {
@@ -253,7 +253,7 @@ try {
 } catch (Exception $e) {
 
 	$errorMessage = $e->getMessage();
-	require('views/error.php');
+	require('views/valid.php');
 
 }
 

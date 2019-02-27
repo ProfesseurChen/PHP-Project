@@ -12,8 +12,8 @@ ob_start(); ?>
             $loginpost = $statslogin->rowCount();
             $nbcomment = $commentspost->rowCount();?>
             <p>Vous avez actuellement écrit : <?php echo $countpost ?> articles.</p>
-            <p>Il y a <?php echo $loginpost ?> membres inscris !</p>
-            <p><?php echo $nbcomment?> commentaires ont été écris à ce jour.</p>
+            <p>Il y a <?php echo $loginpost ?> membres inscrits !</p>
+            <p><?php echo $nbcomment?> commentaires ont été écrits à ce jour.</p>
         </div>
     </div>
     <div id="last-comments" class="row">

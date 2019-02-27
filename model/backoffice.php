@@ -18,7 +18,8 @@ class Backoffice extends Manager {
 
         $reported = $db->prepare('DELETE FROM comments WHERE id = ?');
         $reported->execute(array($commentId));        
-        return $reported;
+        
+        throw new Exception('Le commentaire a été supprimé');
     
     }
 } 

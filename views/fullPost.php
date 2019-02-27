@@ -20,7 +20,7 @@
 		<div id="post-view" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
              <?php echo $post['post']; ?>
-			
+			<div id="date-ticket"><p style="font-style: italic;">Publié le: <?php echo $post['date_post']; ?></p></div>
 		</div>			
 	</div>
 	<div id="interaction" class="row">
@@ -32,7 +32,7 @@
 			
 			<?php
 			if (isset($_SESSION['pseudo'])) { ?>
-				<form action="index.php?action=writeComments&amp;id=<?= _GET['id'] ?>" method="post" enctype="multipart/form-data">
+				<form action="index.php?action=writeComments&amp;id=<?= $_GET['id'] ?>" method="post" enctype="multipart/form-data">
 				<p>Votre pseudo : <?php echo $_SESSION['pseudo']; ?></p>
 				<input type="hidden" name="name-comment" value="<?= $_SESSION['pseudo'] ?>" />
 				<textarea name="comment" class="form-control" rows="5" style="width:300px;" class="mceNoEditor"> </textarea><br />

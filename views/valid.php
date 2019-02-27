@@ -1,11 +1,11 @@
-<?php $title = 'Erreur !';
+<?php $title = 'Notification';
 
 ob_start(); ?>
 
 <div class="container-fluid">
     <div class="row">
         <div id ="error-pic" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <img src="public/pics/crying.png" class="img-fluid" alt="Responsive image" />
+            <img src="public/pics/analyze.png" class="img-fluid" alt="Responsive image" />
         </div>
     </div>
     <div class="row">

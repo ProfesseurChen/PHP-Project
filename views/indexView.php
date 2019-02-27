@@ -16,7 +16,7 @@ if (!empty($_SESSION['pseudo'])) {
         <div id="summary" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div id="summary-content">
             <h2>" Billet simple pour l'Alaska "</h2>
-            <p>Bienvenu sur mon blog personnel ! </p><br />
+            <p>Bienvenue sur mon blog personnel ! </p><br />
             </div>
         </div>
 
@@ -59,16 +59,20 @@ if (!empty($_SESSION['pseudo'])) {
     </div>
     <div id="preview-title" class="row">
         <div id="preview-child" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <h2>Le dernier épisode !</h2><br />
-            <p>Vous pouvez en trouvez d'autres dans la sections "Mes articles" dans la barre de menu.</p>
+            <h2>Retrouvez tous les épisodes !</h2><br />
+            <p>Vous pouvez les trouver dans la section "Mes articles" dans la barre de menu.</p>
             <p> N'hésitez pas à y jeter un oeil, et faire vos retours dans les commentaires !</p>
         </div>
 
        <?php while ($home = $posts->fetch()) 
       {
         ?>
-        <div id ="preview_post" class="col-lg-6 col-md-6 col-sm-12 col-xs-12"> <?php $preview = substr($home['post'], 0, 450);
-        echo $preview . ' . . . <br /><a href="index.php?action=fullPost&amp;id=' . $home['id'] . '"><br />Lire la suite !</a><br />' ?> </div>
+        <div id ="preview_post" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <h3>Le dernier épisode !</h3><br />
+        <?php $preview = substr($home['post'], 0, 250); ?>
+        <p>Publié le: <?= $home['date'] ?></p>
+        <?php echo $preview . ' . . . <br /><a href="index.php?action=fullPost&amp;id=' . $home['id'] . '"><br />Lire la suite !</a><br />' ?> 
+        </div>
 
       <?php
       }?>

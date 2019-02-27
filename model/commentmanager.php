@@ -22,7 +22,7 @@ class CommentManager extends Manager {
 
         $comments = $db->prepare('UPDATE comments SET report = ? WHERE id = '.$commentId.'');
         $comments->execute(array($valuereport));
-        return $comments;
+        throw new Exception('Votre commentaire a bien été signalé !');
 
     }
 
@@ -46,7 +46,8 @@ class CommentManager extends Manager {
         'pseudo' => $pseudo, 
         'comment' => $comment,
         'report' => $report));
-        return $req;
+        
+        throw new Exception('Votre commentaire a bien été ajouté ! Revenez à l\'épisode: <a href="index.php?action=fullPost&amp;id='.$postId.'">ICI</a>');
         
     }
 
@@ -67,7 +68,8 @@ class CommentManager extends Manager {
         $report = 0;
         $comment = $db->prepare("UPDATE comments SET report = ? WHERE id = ?");
         $comment->execute(array($report, $postId));
-        return $comment;
+        
+        throw new Exception('Le commentaire signalé a bien été modéré !');
 
     }
 

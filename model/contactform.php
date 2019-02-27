@@ -14,7 +14,7 @@ class ContactForm extends Manager {
             'mail' => $mail,
             'message' => $message
         ));
-        return $add;
+        throw new Exception('Votre message a bien été envoyé à Jean ! Il vous répondra bientôt !');
 
     }
 
@@ -33,7 +33,8 @@ class ContactForm extends Manager {
 
         $req2 = $db->prepare('DELETE FROM contact WHERE id = ?');
         $req2->execute(array($postId));
-        return $req2;
+        
+        throw new Exception('Le message a été supprimé !');
 
     }
 }

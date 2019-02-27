@@ -44,7 +44,7 @@ class PostManager extends Manager
         }
 
         $start = ($currentPage-1)*$postPerPage;
-        $articles = $db->query('SELECT * FROM tickets ORDER BY id DESC LIMIT '.$start.','.$postPerPage);
+        $articles = $db->query('SELECT id, post, DATE_FORMAT(date, \'%d/%m/%Y\') AS date_post FROM tickets ORDER BY id DESC LIMIT '.$start.','.$postPerPage);
         return $articles;
 
     }
@@ -53,7 +53,7 @@ class PostManager extends Manager
 
         $db = $this->dbConnect();
         
-        $req = $db->prepare('SELECT id, post FROM tickets WHERE id = ?');
+        $req = $db->prepare('SELECT id, post, DATE_FORMAT(date, \'%d/%m/%Y\') AS date_post FROM tickets WHERE id = ?');
         $req->execute(array($postId));
         $fullpost = $req->fetch();        
         return $fullpost;
@@ -64,10 +64,10 @@ class PostManager extends Manager
 
         $db = $this->dbConnect();
 
-        $req = $db->prepare('INSERT INTO tickets(post) VALUES(?)');
+        $req = $db->prepare('INSERT INTO tickets(post, date) VALUES(?, NOW())');
         $req->execute(array($post));
 
-        header('Location: ../index.php');
+        throw new Exception('Votre article a été publié');
     }
 
     public function deletePost($postId) {
@@ -77,7 +77,7 @@ class PostManager extends Manager
         $confirm = '<div class="alert alert-success" role="alert">Votre article a été supprimé !</div>';
         return $confirm;
 
-        header('Location: index.php');
+        throw new Exception('L\'épisode a bien été supprimé');
     }
 
     public function updateFullPost($postId, $post) {
@@ -86,10 +86,8 @@ class PostManager extends Manager
 
         $req = $db->prepare('UPDATE tickets SET post = ? WHERE id = '.$postId.'');
         $req->execute(array($post));
-        $confirmUpdate = '<div class="alert alert-success" role="alert">Votre article a édité !</div>';
-        return $confirmUpdate;
 
-        header('Location: index.php?action=fullPost&amp;id='.$postId.'');
+        throw new Exception('Votre article a bien été modifié ! Vous pouvez le retrouver: <a href="index.php?action=fullPost&amp;id='.$postId.'">ICI</a>');
     }
 }
 ?>

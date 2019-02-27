@@ -17,8 +17,7 @@ class LoginManager extends Manager {
             'password' => $pass_hash,
             'admin' => $admin));
         
-        $confirm = '<div class="alert alert-success" role="alert">Votre compte a été créé !</div>';
-        return $confirm;
+            throw new Exception('Votre compte a été créé. Vous pouvez dès à présent vous connecter dans la page d\'accueil !');
 
     }
 
