@@ -23,9 +23,9 @@ if (!empty($_SESSION['pseudo'])) {
     </div>
     <div  id="details" class="row">
         <div id="about-blog" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <h2>Que trouverez vous ici ?</h2>
-            <p>Ex turba vero imae sortis et paupertinae in tabernis aliqui pernoctant vinariis, non nulli velariis umbraculorum theatralium latent, quae Campanam imitatus lasciviam Catulus in aedilitate sua suspendit omnium primus; aut pugnaciter aleis certant turpi sono fragosis naribus introrsum reducto spiritu concrepantes; aut quod est studiorum omnium maximum ab ortu lucis ad vesperam sole fatiscunt vel pluviis, per minutias aurigarum equorumque praecipua vel delicta scrutantes.</p><br />
-            <p>Incenderat autem audaces usque ad insaniam homines ad haec, quae nefariis egere conatibus, Luscus quidam curator urbis subito visus: eosque ut heiulans baiolorum praecentor ad expediendum quod orsi sunt incitans vocibus crebris. qui haut longe postea ideo vivus exustus est.</p><br />
+            <h2>Jusqu'où nous pouvons aller ?</h2>
+            <p>" La grande porte s’ouvrit lourdement en coulissant sur le côté gauche sans faire le moindre bruit. Derrière la porte, une nouvelle route, éclairée par de multiples projecteurs accrochés de chaque côtés, s’enfonçait dans les profondeurs de cet ouvrage. Cette route était faite de zigzag incessant, et le froid pesant. Mais le chemin est loin d'être terminé "</p><br />
+            <p>" Billet simple pour l'Alaska " est le nouveau roman de Jean Forteroche, auteur de nombreux récits acclamés. Il se sera publié ici même sous forme d'épisodes !</p><br />
         </div>
         
         <?php
@@ -60,7 +60,7 @@ if (!empty($_SESSION['pseudo'])) {
     <div id="preview-title" class="row">
         <div id="preview-child" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <h2>Retrouvez tous les épisodes !</h2><br />
-            <p>Vous pouvez les trouver dans la section "Mes articles" dans la barre de menu.</p>
+            <p>Vous pouvez les trouver dans la section "Épisodes" dans la barre de menu.</p>
             <p> N'hésitez pas à y jeter un oeil, et faire vos retours dans les commentaires !</p>
         </div>
 
@@ -70,7 +70,7 @@ if (!empty($_SESSION['pseudo'])) {
         <div id ="preview_post" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <h3>Le dernier épisode !</h3><br />
         <?php $preview = substr($home['post'], 0, 250); ?>
-        <p>Publié le: <?= $home['date'] ?></p>
+        <p>Publié le: <?php echo $home['date_post']; ?></p>
         <?php echo $preview . ' . . . <br /><a href="index.php?action=fullPost&amp;id=' . $home['id'] . '"><br />Lire la suite !</a><br />' ?> 
         </div>
 

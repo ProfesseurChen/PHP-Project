@@ -32,7 +32,7 @@
             
           <ul class="nav navbar-nav">
             <li> <a href="index.php">Accueil</a> </li>
-            <li> <a href="index.php?action=postView">Mes articles</a> </li>
+            <li> <a href="index.php?action=postView">Épisodes</a> </li>
             <?php if (isset($_SESSION['pseudo']) && $_SESSION['admin'] == 1) {?>
             <li> <a href="index.php?action=writePost">Édition</a> </li>
             <li> <a href="index.php?action=backoffice">Administration</a> </li>
@@ -67,7 +67,7 @@
         </form> 
         <?php 
         } else { ?>
-        <p>Une suggestion ? un avis ? Vous voulez m'envoyer un message privé ? Connectez vous et vous pourrez accéder au formulaire ici même !</p><br />
+        <p id="anchor">Une suggestion ? un avis ? Vous voulez m'envoyer un message privé ? Connectez vous et vous pourrez accéder au formulaire ici même !</p><br />
         <p>J'attends votre message avec impatience !</p>
         <?php } ?>  
       </div>         

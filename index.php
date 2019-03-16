@@ -21,7 +21,7 @@ try {
 			
 				} else {
 					
-					$db = new PDO('mysql:host=localhost;dbname=project;charset=utf8', 'root', 'root');
+					$db = new PDO('mysql:host=db774955093.hosting-data.io;dbname=db774955093;charset=utf8', 'dbo774955093', 'M@tthieu17700');
 			
 					$req = $db->prepare('SELECT id FROM account WHERE pseudo = ?');
 					$req->execute(array($_POST['log-pseudo']));
@@ -65,7 +65,7 @@ try {
 
 		} elseif ($_GET['action'] == 'addLogin') { 
 
-			$db = new PDO('mysql:host=localhost;dbname=project;charset=utf8', 'root', 'root');
+			$db = new PDO('mysql:host=db774955093.hosting-data.io;dbname=db774955093;charset=utf8', 'dbo774955093', 'M@tthieu17700');
 			
 			$pseudo = $_POST['my-pseudo'];
 			$mail = $_POST['my-mail'];

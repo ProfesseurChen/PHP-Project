@@ -10,12 +10,19 @@
 body {
   padding-top: 0px;
   font-family: 'Montserrat', sans-serif;
+  background-color: #fcf8f5;
 }
 
 @media (max-width: 991.98px) {
     body p  {
     font-size: 0.9em;
     }
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+
+    color: #404040;
+
 }
 
 
@@ -216,6 +223,23 @@ div#login-asset p {
 
 /* SECTION ARTICLES */
 
+div#list-post.row {
+    text-align: center;
+}
+
+#preview_postview.col-lg-6.col-md-6.col-sm-12.col-xs-12 {
+    border-style: double;
+    width: 30%;
+    height: 300px;
+    margin: 10px 10% 20px 10%;
+    background-color: white;
+    font-size: 12px;
+}
+
+div#post-list.container-fluid {
+    text-align: center;
+}
+
 span#date {
     font-size: 12px;
     font-style: italic;
@@ -260,6 +284,12 @@ div#block-preview {
 
     div#footer.row {
         flex-direction: column;
+    }
+
+    #preview_postview.col-lg-6.col-md-6.col-sm-12.col-xs-12 {
+        margin: 10px 5% 10px 5%;
+        width: 90%;
+        height: auto;
     }
 
 }
@@ -311,10 +341,10 @@ div#preview_postview p {
     hyphens: auto;
 }
 div#preview_postview {
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 div#preview_post.col-lg-12.col-md-12.col-sm-12.col-xs-12 a {
     font-size: 1.2em;
@@ -410,7 +440,7 @@ div#error-pic.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
 }
 
 div#interaction.row {
-    background-color: #BFBFBF;
+    background-color: #e5e5e5;
     padding-left: 5%;
     padding-right: 5%;
     min-height: 400px;
@@ -540,6 +570,11 @@ div#about-me.col-lg-6.col-lg-6.col-sm-12.col-xs-12, div#form-contact.col-lg-4.co
     flex-direction: column;
 }
 
+div#write-tinymce.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
 
 /* LE FORMULAIRE DE CREATION DE COMPTE */
 
@@ -567,7 +602,7 @@ div#backoffice.container-fluid h2 {
 }
 
 div#stats-admin.row {
-    background-color: #FFFFFF;
+    background-color: #fcf8f5;
     min-height: 250px;
     display: flex;
     justify-content: center;
@@ -639,6 +674,9 @@ div#stats.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
 
     text-align: center;
     font-size: 1.2em;
+    border-style: double;
+    background-color: white;
+    width: 300px;
 }
 
 div#interact-admin.row {

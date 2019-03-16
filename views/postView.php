@@ -2,15 +2,16 @@
 
 <?php ob_start(); ?>
 
-<article>
+<div id="post-list" class="container-fluid">
+    <h1>Tous mes épisodes. N'hésitez pas à laisser vos commentaires ! </h1>
     <div id="list-post" class="row">
         
-        <h1>La liste de mes articles. N'hésitez pas à laisser vos commentaires en dessous ! </h1>
+        
 
         
         <?php
 
-        $postPerPage = 6;
+        $postPerPage = 4;
         $pages = ceil($pagination/$postPerPage);
 
         if (isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GET['page'] <= $pages) {
@@ -74,7 +75,7 @@
             </div>
         </div>
     </div>
-</article>
+</div>
 
 <?php $home = ob_get_clean(); ?>
 
